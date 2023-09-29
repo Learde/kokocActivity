@@ -1,4 +1,4 @@
-# career-connect
+# Kokos group
 
 ## Архитектура
 
