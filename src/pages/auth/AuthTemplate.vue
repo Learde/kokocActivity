@@ -1,7 +1,10 @@
 <script setup>
-import { useRouter } from "vue-router";
+import { useRouter, useRoute } from "vue-router";
+
+import { isNil } from "@/shared";
 
 const router = useRouter();
+const route = useRoute();
 
 const goBack = () => {
     router.go(-1);
@@ -9,18 +12,42 @@ const goBack = () => {
 </script>
 
 <template>
-    <div>
+    <div class="auth-template">
         <div class="top-menu">
             <div class="top-menu-arrow">
                 <span class="arrow" @click="goBack">&larr;</span>
             </div>
-            <NH3>Войти</NH3>
+            <NH3>{{ route.meta.title }}</NH3>
         </div>
-        <RouterView />
+        <div class="content">
+            <RouterView />
+        </div>
+        <div v-if="!isNil(route.meta.step)" class="steps">
+            <div
+                class="step"
+                :class="{ active: Number(route.meta.step) === 1 }"
+            ></div>
+            <div
+                class="step"
+                :class="{ active: Number(route.meta.step) === 2 }"
+            ></div>
+            <div
+                class="step"
+                :class="{ active: Number(route.meta.step) === 3 }"
+            ></div>
+        </div>
     </div>
 </template>
 
 <style scoped>
+.auth-template {
+    display: flex;
+
+    flex-direction: column;
+
+    height: 100%;
+}
+
 .top-menu {
     padding: 8px 16px 24px;
     margin: -16px -16px 0;
@@ -38,5 +65,34 @@ const goBack = () => {
 
 .arrow {
     cursor: pointer;
+}
+
+.content {
+    height: 100%;
+}
+
+.steps {
+    display: flex;
+
+    gap: 4px;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 8px 0 4px;
+}
+
+.step {
+    display: block;
+
+    width: 8px;
+    height: 8px;
+
+    background-color: #9b9b9b;
+    border-radius: 10px;
+}
+
+.step.active {
+    background-color: #000;
 }
 </style>
