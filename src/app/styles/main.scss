@@ -40,9 +40,17 @@ body, html {
   margin: 0;
 }
 
+h1 {
+  line-height: 38.4px;
+}
+
 h3 {
   margin-bottom: 5px;
 
   // color: var(--c-heading);
   // font-size: var(--default-h3-size);
+}
+
+a {
+  text-decoration: none;
 }

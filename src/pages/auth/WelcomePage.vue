@@ -2,15 +2,15 @@
 
 <template>
     <div class="welcome-page">
-        <h1>Тренируйтесь и помогайте</h1>
-        <span>Фитнес, меняющий мир</span>
+        <NH1>Тренируйтесь и помогайте</NH1>
+        <NText depth="2">Фитнес, меняющий мир</NText>
         <RouterLink class="button-link" :to="{ name: 'Registration' }">
             <NButton type="primary"> Зарегистрироваться </NButton>
         </RouterLink>
-        <span>
+        <NText depth="2">
             Уже зарегистрированы?
             <RouterLink :to="{ name: 'Login' }">Войти</RouterLink>
-        </span>
+        </NText>
     </div>
 </template>
 
@@ -23,18 +23,12 @@
     align-items: center;
 
     height: 100%;
-    padding: 30px 0;
+    padding: 38px 0;
 
     & h1 {
         margin-bottom: 5px;
-    }
 
-    & span {
-        color: #808080;
-    }
-
-    & a {
-        text-decoration: none;
+        text-align: center;
     }
 }
 
