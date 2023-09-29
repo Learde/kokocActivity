@@ -23,7 +23,7 @@
     align-items: center;
 
     height: 100%;
-    padding: 38px 0;
+    padding: 32px 0;
 
     & h1 {
         margin-bottom: 5px;
