@@ -3,7 +3,7 @@
 <template>
     <div class="welcome-page">
         <h1>Тренируйтесь и помогайте</h1>
-        <p>Фитнес, меняющий мир</p>
+        <span>Фитнес, меняющий мир</span>
         <RouterLink class="button-link" :to="{ name: 'Registration' }">
             <NButton type="primary"> Зарегистрироваться </NButton>
         </RouterLink>
@@ -27,6 +27,14 @@
 
     & h1 {
         margin-bottom: 5px;
+    }
+
+    & span {
+        color: #808080;
+    }
+
+    & a {
+        text-decoration: none;
     }
 }
 
