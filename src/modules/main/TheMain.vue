@@ -22,7 +22,7 @@
     min-height: 100vh;
     padding: 0;
 
-    background: var(--c-background);
+    background: var(--c-foreground);
 }
 
 .content {

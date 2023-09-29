@@ -60,6 +60,7 @@ module.exports = {
         "no-debugger": 0,
         "sort-imports": 0,
         "node/no-missing-import": 0,
+        "regexp/no-unused-capturing-group": 0,
         "prettier/prettier": [
             "error",
             {

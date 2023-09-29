@@ -11,8 +11,15 @@ export const naiveConfig = {
         infoColorPressed: "#00296d",
         borderRadius: "100px",
     },
+    Form: {
+        feedbackFontSizeMedium: "11px",
+    },
     Typography: {
         headerFontSize1: "32px",
+        headerFontSize3: "24px",
+        headerMargin3: "0",
+        headerMargin2: "0",
+        headerTextColor: "#1D1B20",
         headerFontWeight: "800",
         textColor2Depth: "#808080",
     },
