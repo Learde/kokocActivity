@@ -2,7 +2,7 @@
 import { NConfigProvider } from "naive-ui";
 import { RouterView } from "vue-router";
 
-import { TheHeader, useAuthStore } from "@/modules";
+import { TheHeader, useAuthStore, TheMain } from "@/modules";
 
 import { naiveConfig } from "./naiveConfig";
 
@@ -11,7 +11,9 @@ const authStore = useAuthStore();
 
 <template>
     <NConfigProvider :theme-overrides="naiveConfig">
-        <RouterView />
+        <TheMain>
+            <RouterView />
+        </TheMain>
         <TheHeader v-if="authStore.isAuthenticated" />
     </NConfigProvider>
 </template>

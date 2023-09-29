@@ -10,4 +10,9 @@ export default [
         name: "Registration",
         component: () => import("./RegistrationPage.vue"),
     },
+    {
+        path: "/welcome",
+        name: "Welcome",
+        component: () => import("./WelcomePage.vue"),
+    },
 ];

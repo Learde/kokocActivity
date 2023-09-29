@@ -15,15 +15,19 @@
 
     display: flex;
 
-    align-items: center;
+    align-items: baseline;
     justify-content: center;
 
+    height: 100vh;
     min-height: 100vh;
+    padding: 0;
 
     background: var(--c-background);
 }
 
 .content {
+    width: 100%;
+    height: 100%;
     padding: 10px;
 }
 </style>
