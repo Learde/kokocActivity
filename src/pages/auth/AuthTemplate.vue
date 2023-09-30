@@ -1,83 +1,34 @@
 <script setup>
-import { useRouter, useRoute } from "vue-router";
+import { useRoute } from "vue-router";
 
+import { BackTemplate } from "@/components";
 import { isNil } from "@/shared";
 
-const router = useRouter();
 const route = useRoute();
-
-const goBack = () => {
-    router.go(-1);
-};
 </script>
 
 <template>
-    <div class="auth-template">
-        <div
-            class="top-menu"
-            :class="{ 'top-menu-bgc': !route.meta.noBackground }"
-        >
-            <div class="top-menu-arrow">
-                <span class="arrow" @click="goBack">&larr;</span>
+    <BackTemplate>
+        <template #footer>
+            <div v-if="!isNil(route.meta.step)" class="steps">
+                <div
+                    class="step"
+                    :class="{ active: Number(route.meta.step) === 1 }"
+                ></div>
+                <div
+                    class="step"
+                    :class="{ active: Number(route.meta.step) === 2 }"
+                ></div>
+                <div
+                    class="step"
+                    :class="{ active: Number(route.meta.step) === 3 }"
+                ></div>
             </div>
-            <NH3 v-if="route.meta.title">{{ route.meta.title }}</NH3>
-        </div>
-        <div class="content">
-            <RouterView />
-        </div>
-        <div v-if="!isNil(route.meta.step)" class="steps">
-            <div
-                class="step"
-                :class="{ active: Number(route.meta.step) === 1 }"
-            ></div>
-            <div
-                class="step"
-                :class="{ active: Number(route.meta.step) === 2 }"
-            ></div>
-            <div
-                class="step"
-                :class="{ active: Number(route.meta.step) === 3 }"
-            ></div>
-        </div>
-    </div>
+        </template>
+    </BackTemplate>
 </template>
 
 <style scoped>
-.auth-template {
-    display: flex;
-
-    flex-direction: column;
-
-    height: 100%;
-}
-
-.top-menu {
-    padding: 8px 16px 24px;
-    margin: -16px -16px 0;
-}
-
-.top-menu-bgc {
-    background-color: #fef7ff;
-}
-
-.top-menu-arrow {
-    display: flex;
-
-    align-items: center;
-
-    height: 48px;
-
-    font-size: 20px;
-}
-
-.arrow {
-    cursor: pointer;
-}
-
-.content {
-    height: 100%;
-}
-
 .steps {
     display: flex;
 
