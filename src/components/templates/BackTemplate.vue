@@ -7,6 +7,10 @@ const props = defineProps({
         type: Boolean,
         default: true,
     },
+    hasContentPT: {
+        type: Boolean,
+        default: true,
+    },
     noBackground: {
         type: Boolean,
         default: false,
@@ -61,7 +65,10 @@ const hasTitle = computed(() => {
                 {{ route.meta.title ?? title }}
             </NH3>
         </div>
-        <div class="content" :class="contentClass">
+        <div
+            class="content"
+            :class="{ 'content-pt': hasContentPT, contentClass }"
+        >
             <slot>
                 <RouterView />
             </slot>
@@ -120,6 +127,9 @@ const hasTitle = computed(() => {
 
 .content {
     height: 100%;
+}
+
+.content-pt {
     padding-top: 16px;
 }
 </style>

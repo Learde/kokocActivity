@@ -1,11 +1,18 @@
+import { useCookies } from "@vueuse/integrations/useCookies";
 import { defineStore } from "pinia";
-import { ref } from "vue";
+import { computed } from "vue";
 
 export const useUserStore = defineStore("user", () => {
-    const role = ref(null);
+    const cookies = useCookies(["role"]);
+
+    const role = computed(() => {
+        return cookies.get("role");
+    });
 
     function setRole(value) {
-        role.value = String(value).toLowerCase();
+        cookies.set("role", String(value).toLowerCase(), {
+            maxAge: 60 * 60 * 24,
+        });
     }
 
     return { role, setRole };

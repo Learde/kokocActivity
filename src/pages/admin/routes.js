@@ -23,4 +23,9 @@ export default [
             },
         ],
     },
+    {
+        path: "/admin/settings",
+        name: "AdminSettings",
+        component: () => import("./AdminSettings.vue"),
+    },
 ];

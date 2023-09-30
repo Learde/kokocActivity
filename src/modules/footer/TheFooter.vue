@@ -3,6 +3,13 @@ import { useRouter } from "vue-router";
 
 const router = useRouter();
 
+defineProps({
+    isAdmin: {
+        type: Boolean,
+        default: false,
+    },
+});
+
 const goTo = (name) => {
     router.push({ name });
 };
@@ -12,7 +19,11 @@ const goTo = (name) => {
     <div class="footer-menu">
         <div class="block" @click="goTo('summary')">Сводка</div>
         <div class="block" @click="goTo('practices')">Курсы</div>
-        <div class="block" @click="goTo('shop')">Магазин</div>
+
+        <div v-if="isAdmin" class="block" @click="goTo('AdminSettings')">
+            Управление
+        </div>
+        <div v-else class="block" @click="goTo('shop')">Магазин</div>
     </div>
 </template>
 
