@@ -30,6 +30,10 @@ const goToRegistration = () => {
         router.push({ name: "RegistrationUserStep1" });
     } else if (role.value === "admin") {
         router.push({ name: "RegistrationAdminStep1" });
+    } else if (role.value === "fund") {
+        router.push({ name: "RegistrationFundStep1" });
+    } else if (role.value === "department") {
+        router.push({ name: "RegistrationDepartmentStep1" });
     }
 };
 </script>

@@ -89,6 +89,72 @@ export const routes = [
                 },
                 component: () => import("./RegistrationAdminStep2.vue"),
             },
+            {
+                path: "/registration/fund/1",
+                name: "RegistrationFundStep1",
+                meta: {
+                    title: "Давайте познакомимся",
+                    step: 1,
+                    steps: 3,
+                    isDirectionColumn: true,
+                },
+                component: () => import("./RegistrationFundStep1.vue"),
+            },
+            {
+                path: "/registration/fund/2",
+                name: "RegistrationFundStep2",
+                meta: {
+                    title: "Описание вашего фонда",
+                    step: 2,
+                    steps: 3,
+                    isDirectionColumn: true,
+                },
+                component: () => import("./RegistrationFundStep2.vue"),
+            },
+            {
+                path: "/registration/fund/3",
+                name: "RegistrationFundStep3",
+                meta: {
+                    noBackground: true,
+                    step: 3,
+                    steps: 3,
+                    isDirectionColumn: true,
+                },
+                component: () => import("./RegistrationFundStep3.vue"),
+            },
+            {
+                path: "/registration/department/1",
+                name: "RegistrationDepartmentStep1",
+                meta: {
+                    title: "Давайте познакомимся",
+                    step: 1,
+                    steps: 3,
+                    isDirectionColumn: true,
+                },
+                component: () => import("./RegistrationDepartmentStep1.vue"),
+            },
+            {
+                path: "/registration/department/2",
+                name: "RegistrationDepartmentStep2",
+                meta: {
+                    title: "Описание вашего департамента",
+                    step: 2,
+                    steps: 3,
+                    isDirectionColumn: true,
+                },
+                component: () => import("./RegistrationDepartmentStep2.vue"),
+            },
+            {
+                path: "/registration/department/3",
+                name: "RegistrationDepartmentStep3",
+                meta: {
+                    noBackground: true,
+                    step: 3,
+                    steps: 3,
+                    isDirectionColumn: true,
+                },
+                component: () => import("./RegistrationDepartmentStep3.vue"),
+            },
         ],
     },
 ];
