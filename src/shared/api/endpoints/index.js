@@ -20,3 +20,4 @@ export { registerUser } from "./auth/registerUser";
 export { registerAdmin } from "./auth/registerAdmin";
 export { registerFund } from "./auth/registerFund";
 export { registerDepartment } from "./auth/registerDepartment";
+export { login } from "./auth/login";

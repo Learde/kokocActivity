@@ -29,3 +29,8 @@ export const mapDepartmentToServer = getDataMapper({
     password: mapField("password"),
     description: mapField("description"),
 });
+
+export const mapLoginDataToServer = getDataMapper({
+    email: mapField("email"),
+    password: mapField("password"),
+});
