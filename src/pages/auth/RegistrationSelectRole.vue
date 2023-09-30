@@ -28,6 +28,8 @@ const roles = [
 const goToRegistration = () => {
     if (role.value === "user") {
         router.push({ name: "RegistrationUserStep1" });
+    } else if (role.value === "admin") {
+        router.push({ name: "RegistrationAdminStep1" });
     }
 };
 </script>

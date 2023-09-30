@@ -67,6 +67,28 @@ export const routes = [
                 },
                 component: () => import("./RegistrationUserStep4.vue"),
             },
+            {
+                path: "/registration/admin/1",
+                name: "RegistrationAdminStep1",
+                meta: {
+                    title: "Давайте познакомимся",
+                    step: 1,
+                    steps: 2,
+                    isDirectionColumn: true,
+                },
+                component: () => import("./RegistrationAdminStep1.vue"),
+            },
+            {
+                path: "/registration/admin/2",
+                name: "RegistrationAdminStep2",
+                meta: {
+                    noBackground: true,
+                    step: 2,
+                    steps: 2,
+                    isDirectionColumn: true,
+                },
+                component: () => import("./RegistrationAdminStep2.vue"),
+            },
         ],
     },
 ];
