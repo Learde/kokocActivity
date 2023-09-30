@@ -13,6 +13,8 @@
     position: fixed;
     bottom: 0;
 
+    z-index: 999999999;
+
     display: grid;
 
     grid-template-columns: 1fr 1fr 1fr;
