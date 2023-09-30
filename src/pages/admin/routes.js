@@ -28,4 +28,9 @@ export default [
         name: "AdminSettings",
         component: () => import("./AdminSettings.vue"),
     },
+    {
+        path: "/admin/exercises",
+        name: "AdminExercises",
+        component: () => import("./AdminExercises.vue"),
+    },
 ];

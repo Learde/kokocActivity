@@ -21,3 +21,6 @@ export { registerAdmin } from "./auth/registerAdmin";
 export { registerFund } from "./auth/registerFund";
 export { registerDepartment } from "./auth/registerDepartment";
 export { login } from "./auth/login";
+
+// exercises
+export { getExercises } from "./exercises/getExercises";

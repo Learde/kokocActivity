@@ -1,6 +1,14 @@
 <script setup>
+import { useRouter } from "vue-router";
+
 import { BackTemplate } from "@/components";
 import { IconMenuRight } from "@/shared";
+
+const router = useRouter();
+
+const goTo = (name) => {
+    router.push({ name });
+};
 </script>
 
 <template>
@@ -9,7 +17,7 @@ import { IconMenuRight } from "@/shared";
         :has-content-p-t="false"
         title="Управление"
     >
-        <div class="admin-settings">
+        <div class="admin-settings" @click="goTo('AdminExercises')">
             <span>Настроить упражнения</span>
             <IconMenuRight />
         </div>

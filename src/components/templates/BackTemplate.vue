@@ -64,6 +64,7 @@ const hasTitle = computed(() => {
             <NH3 v-if="hasTitle">
                 {{ route.meta.title ?? title }}
             </NH3>
+            <slot name="action" />
         </div>
         <div
             class="content"
