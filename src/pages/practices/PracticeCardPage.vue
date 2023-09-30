@@ -6,8 +6,6 @@ import { BackTemplate } from "@/components";
 const router = useRouter();
 const route = useRoute();
 
-console.log(route);
-
 const singUpPractice = () => {
     router.push({ name: "practice-fund", params: { id: route.params.id } });
 };
