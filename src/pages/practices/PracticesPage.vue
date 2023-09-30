@@ -1,7 +1,16 @@
 <script setup>
-import { ref } from "vue";
+import { ref, onMounted } from "vue";
 
-import { PracticeCard } from "@/components";
+import { PracticeCard, usePracticeStore } from "@/components";
+
+const store = usePracticeStore();
+
+// const loading = ref(true);
+
+onMounted(() => {
+    store.fetchPractices();
+    console.log(store.practices);
+});
 
 const tags = [
     {
