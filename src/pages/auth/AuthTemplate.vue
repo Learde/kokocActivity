@@ -13,11 +13,14 @@ const goBack = () => {
 
 <template>
     <div class="auth-template">
-        <div class="top-menu">
+        <div
+            class="top-menu"
+            :class="{ 'top-menu-bgc': !route.meta.noBackground }"
+        >
             <div class="top-menu-arrow">
                 <span class="arrow" @click="goBack">&larr;</span>
             </div>
-            <NH3>{{ route.meta.title }}</NH3>
+            <NH3 v-if="route.meta.title">{{ route.meta.title }}</NH3>
         </div>
         <div class="content">
             <RouterView />
@@ -51,7 +54,9 @@ const goBack = () => {
 .top-menu {
     padding: 8px 16px 24px;
     margin: -16px -16px 0;
+}
 
+.top-menu-bgc {
     background-color: #fef7ff;
 }
 
@@ -61,6 +66,8 @@ const goBack = () => {
     align-items: center;
 
     height: 48px;
+
+    font-size: 20px;
 }
 
 .arrow {

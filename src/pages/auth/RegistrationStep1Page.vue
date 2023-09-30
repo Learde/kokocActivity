@@ -1,5 +1,6 @@
 <script setup>
 import { computed, ref } from "vue";
+import { useRouter } from "vue-router";
 
 import { getEmailValidationFeedback, getEmailValidationStatus } from "./lib";
 
@@ -13,6 +14,12 @@ const inputValidationStatus = computed(() => {
 const inputFeedback = computed(() => {
     return email.value ? getEmailValidationFeedback(email.value) : "";
 });
+
+const router = useRouter();
+
+const nextStep = () => {
+    router.push({ name: "RegistrationStep2" });
+};
 </script>
 
 <template>
@@ -39,7 +46,12 @@ const inputFeedback = computed(() => {
             прогресс. Спасибо за регистрацию и присоединение к нашему
             фитнес-сообществу!
         </NText>
-        <NButton class="registration-button" type="primary" block>
+        <NButton
+            class="registration-button"
+            type="primary"
+            block
+            @click="nextStep"
+        >
             Продолжить
         </NButton>
     </NForm>

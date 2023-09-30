@@ -10,7 +10,13 @@ const router = createRouter({
 
 router.beforeEach(async (to) => {
     const authStore = useAuthStore();
-    const authRoutes = ["Welcome", "Login", "RegistrationStep1"];
+    const authRoutes = [
+        "Welcome",
+        "Login",
+        "RegistrationStep1",
+        "RegistrationStep2",
+        "RegistrationStep3",
+    ];
 
     if (!authStore.isAuthenticated && !authRoutes.includes(to.name)) {
         return { name: "Welcome" };

@@ -9,6 +9,8 @@ export const naiveConfig = {
         infoColor: "#003791",
         infoColorHover: "#003183",
         infoColorPressed: "#00296d",
+    },
+    Input: {
         borderRadius: "100px",
     },
     Form: {

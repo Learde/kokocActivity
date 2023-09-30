@@ -22,6 +22,18 @@ export default [
                 meta: { title: "Давайте познакомимся", step: 1 },
                 component: () => import("./RegistrationStep1Page.vue"),
             },
+            {
+                path: "/registration/2",
+                name: "RegistrationStep2",
+                meta: { title: "Введите ваши параметры", step: 2 },
+                component: () => import("./RegistrationStep2Page.vue"),
+            },
+            {
+                path: "/registration/3",
+                name: "RegistrationStep3",
+                meta: { noBackground: true, step: 3 },
+                component: () => import("./RegistrationStep3Page.vue"),
+            },
         ],
     },
 ];
