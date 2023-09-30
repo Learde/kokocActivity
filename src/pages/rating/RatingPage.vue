@@ -26,12 +26,8 @@ const currentTab = ref("money");
 </script>
 
 <template>
-    <BackTemplate title="Рейтинг">
+    <BackTemplate title="Рейтинг" noBackground>
         <div class="rating-page">
-            <div class="header">
-                <div class="btn-back"></div>
-                <span class="page-title">Рейтинг</span>
-            </div>
             <div class="list">
                 <NH2 class="title">Топ-10</NH2>
                 <div class="nav-menu">
@@ -54,7 +50,7 @@ const currentTab = ref("money");
                     </NTabs>
                 </div>
                 <div class="users">
-                    <UserCard />
+                    <UserCard :type="currentTab" />
                     <UserCard />
                     <UserCard />
                     <UserCard />
@@ -79,18 +75,7 @@ const currentTab = ref("money");
 </template>
 
 <style scoped lang="scss">
-.page-title {
-    /* M3/title/large */
-    font-size: 22px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 28px; /* 127.273% */
-    color: var(--m-3-sys-light-on-surface, #1d1b20);
-}
-
 .list {
-    margin-top: 16px;
-
     .title {
         /* Title/H3 */
         font-size: 20px;
@@ -106,7 +91,7 @@ const currentTab = ref("money");
 }
 
 .info {
-    margin-top: 16px;
+    padding: 16px 0;
 
     .title {
         /* Title/H4 */

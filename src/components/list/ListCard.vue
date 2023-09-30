@@ -15,6 +15,7 @@ defineEmits(["edit", "close", "delete", "click"]);
         <div :class="classes.header">
             <h4><slot name="title" /></h4>
             <div :class="classes.icons">
+                <slot name="tag"></slot>
                 <IconEdit
                     v-if="hasEdit"
                     :class="classes.icon"
@@ -49,7 +50,7 @@ defineEmits(["edit", "close", "delete", "click"]);
 
     width: 100%;
     min-height: 105px;
-    padding: 12px 35px;
+    padding: 12px;
 
     background: var(--c-foreground);
     border-radius: var(--border-radius);
@@ -58,6 +59,8 @@ defineEmits(["edit", "close", "delete", "click"]);
 
 .header {
     display: flex;
+
+    align-items: center;
 
     justify-content: space-between;
 
