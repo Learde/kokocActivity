@@ -46,7 +46,9 @@ const login = () => {
         </NFormItem>
         <NButton block type="primary" @click="login">Войти</NButton>
         <div class="login-form-restore">
-            <RouterLink :to="{ name: 'Login' }">Забыли пароль?</RouterLink>
+            <RouterLink :to="{ name: 'Login' }" #="{ navigate, href }" custom>
+                <NA :href="href" @click="navigate"> Забыли пароль? </NA>
+            </RouterLink>
         </div>
     </NForm>
 </template>

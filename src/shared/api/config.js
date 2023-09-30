@@ -3,9 +3,10 @@ import axios from "axios";
 import { isFunction } from "../lib";
 
 // Constants
-const BASE_URL = window.BASE_URL ?? "http://51.250.105.58/api/";
+const BASE_URL = window.BASE_URL ?? "http://51.250.12.218/api/";
 
 // Variables
+
 let token =
     "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJMZWFyZGUiLCJpYXQiOjE2ODUyODc4NDQsImV4cCI6MTY4NTM3NDI0NH0.zSxeA0o7ADXccTtZ_Q44bwsyrwQfJvGc1pq5HtXg8oQ";
 let handleResponseFulfilled = null;
