@@ -13,7 +13,7 @@ defineEmits(["edit", "close", "delete", "click"]);
 <template>
     <div :class="classes.card" @click="$emit('click')">
         <div :class="classes.header">
-            <h4><slot name="title" /></h4>
+            <div><slot name="title" /></div>
             <div :class="classes.icons">
                 <slot name="tag"></slot>
                 <IconEdit
@@ -90,8 +90,6 @@ defineEmits(["edit", "close", "delete", "click"]);
 }
 
 .content {
-    margin-bottom: 20px;
-
     font-size: 15px;
 }
 
