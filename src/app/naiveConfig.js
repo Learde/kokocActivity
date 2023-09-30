@@ -30,4 +30,10 @@ export const naiveConfig = {
         paddingMedium: "22px 24px",
         fontSizeMedium: "14px",
     },
+    Tag: {
+        colorChecked: "#E8DEF8",
+    },
+    Checkbox: {
+        sizeLarge: "24px",
+    },
 };

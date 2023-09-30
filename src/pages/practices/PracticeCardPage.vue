@@ -1,5 +1,16 @@
 <script setup>
+import { useRouter, useRoute } from "vue-router";
+
 import { BackTemplate } from "@/components";
+
+const router = useRouter();
+const route = useRoute();
+
+console.log(route);
+
+const singUpPractice = () => {
+    router.push({ name: "practice-fund", params: { id: route.params.id } });
+};
 </script>
 
 <template>
@@ -30,11 +41,13 @@ import { BackTemplate } from "@/components";
         </div>
     </BackTemplate>
     <div class="footer-container">
-        <NButton class="btn" type="primary"> Записаться </NButton>
+        <NButton class="btn" type="primary" @click="singUpPractice">
+            Записаться
+        </NButton>
     </div>
 </template>
 
-<style scope lang="scss">
+<style scoped lang="scss">
 .practice-card {
     padding-bottom: 80px;
 }

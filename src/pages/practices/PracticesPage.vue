@@ -1,7 +1,7 @@
 <script setup>
 import { ref } from "vue";
 
-import { TheCard } from "@/modules";
+import { PracticeCard } from "@/components";
 
 const tags = [
     {
@@ -32,7 +32,7 @@ const updateTag = (val) => {
             Тренировки, которые пользуются популярностью
         </div>
         <div class="popular-cards">
-            <TheCard />
+            <PracticeCard />
         </div>
         <div class="main-title tags-title roboto-flex">
             Найдите занятие по душе!
@@ -43,14 +43,14 @@ const updateTag = (val) => {
                 :key="tag.id"
                 :checked="tag.id === checked.value"
                 checkable
-                type="primary"
+                :class="{ 'n-tag--active': tag.id === checked }"
                 @click="updateTag(tag.id)"
             >
                 {{ tag.name }}
             </NTag>
         </div>
         <div class="all-cards">
-            <TheCard small />
+            <PracticeCard small />
         </div>
     </div>
 </template>
@@ -86,6 +86,19 @@ const updateTag = (val) => {
 }
 
 .tags {
-    margin-top: 10px;
+    display: flex;
+
+    gap: 10px;
+
+    margin-top: 16px;
+
+    .n-tag--active {
+        color: var(--m-3-sys-light-on-secondary-container, #1d192b) !important;
+
+        background: var(
+            --m-3-sys-light-secondary-container,
+            #e8def8
+        ) !important;
+    }
 }
 </style>
