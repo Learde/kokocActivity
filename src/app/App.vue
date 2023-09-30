@@ -10,10 +10,14 @@ const authStore = useAuthStore();
 </script>
 
 <template>
-    <NConfigProvider :theme-overrides="naiveConfig">
-        <TheMain :has-footer="authStore.isAuthenticated">
-            <RouterView />
-        </TheMain>
-        <TheFooter v-if="authStore.isAuthenticated" />
-    </NConfigProvider>
+    <NMessageProvider>
+        <NDialogProvider>
+            <NConfigProvider :theme-overrides="naiveConfig">
+                <TheMain :has-footer="authStore.isAuthenticated">
+                    <RouterView />
+                </TheMain>
+                <TheFooter v-if="authStore.isAuthenticated" />
+            </NConfigProvider>
+        </NDialogProvider>
+    </NMessageProvider>
 </template>
