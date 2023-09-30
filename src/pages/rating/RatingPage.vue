@@ -29,7 +29,7 @@ const currentTab = ref("money");
     <BackTemplate title="Рейтинг" noBackground>
         <div class="rating-page">
             <div class="list">
-                <NH2 class="title">Топ-10</NH2>
+                <NH2 class="title roboto-flex">Топ-10</NH2>
                 <div class="nav-menu">
                     <NTabs
                         type="line"
@@ -63,12 +63,16 @@ const currentTab = ref("money");
                 </div>
             </div>
             <div class="info">
-                <span class="title">Среднее время тренировок в день</span>
-                <NH2 class="text">1 час</NH2>
+                <span class="title roboto-flex"
+                    >Среднее время тренировок в день</span
+                >
+                <NH2 class="text roboto-flex">1 час</NH2>
             </div>
             <div class="info">
-                <span class="title">Средняя сумма доната в день</span>
-                <NH2 class="text">200 купюр</NH2>
+                <span class="title roboto-flex"
+                    >Средняя сумма доната в день</span
+                >
+                <NH2 class="text roboto-flex">200 купюр</NH2>
             </div>
         </div>
     </BackTemplate>

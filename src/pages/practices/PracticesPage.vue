@@ -19,7 +19,9 @@ const checked2 = ref(false);
         <div class="cards">
             <ListCard class="card">
                 <template #title>
-                    <span class="card-title">Гармония тела и души</span>
+                    <span class="card-title roboto-flex"
+                        >Гармония тела и души</span
+                    >
                 </template>
                 <template #tag>
                     <NTag checked checkable> Йога </NTag>
@@ -52,7 +54,6 @@ const checked2 = ref(false);
 
         .card-title {
             /* Title/H4 */
-            // font-family: "Roboto Flex";
             font-size: 16px;
             font-style: normal;
             font-weight: 800;

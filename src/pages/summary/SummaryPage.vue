@@ -13,15 +13,15 @@ const toRating = () => {
 <template>
     <div>
         <div class="header">
-            <NH2 class="title">Сводка</NH2>
+            <NH2 class="title roboto-flex">Сводка</NH2>
             <NAvatar round size="small" class="avatar" />
         </div>
         <div class="main">
-            <NH3>Активность</NH3>
+            <NH3 class="active roboto-flex">Активность</NH3>
             <div class="card">
                 <div class="progress">
                     <div class="text">
-                        <span class="title">Ваш прогресс</span>
+                        <span class="title roboto-flex">Ваш прогресс</span>
                         <span class="actives">7/9 упражнений</span>
                         <span class="lvl">Вы на 8 уровне 🔥</span>
                     </div>
@@ -46,7 +46,7 @@ const toRating = () => {
                 Продолжить последнее занятие
             </NButton>
             <div class="rating">
-                <NH2 class="title">Рейтинг</NH2>
+                <NH2 class="rating-title roboto-flex">Рейтинг</NH2>
                 <UserCard />
                 <UserCard />
                 <UserCard />
@@ -87,6 +87,10 @@ const toRating = () => {
 .main {
     padding: 0 0 16px;
     overflow: auto;
+
+    .active {
+        margin-bottom: 12px;
+    }
 
     .btn {
         width: 100%;
@@ -190,6 +194,10 @@ const toRating = () => {
 
     .rating {
         margin-top: 16px;
+
+        .rating-title {
+            margin-bottom: 12px;
+        }
     }
 }
 </style>
