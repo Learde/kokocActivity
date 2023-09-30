@@ -7,7 +7,7 @@ import { IconPlus } from "@/shared";
 const router = useRouter();
 
 const goToAdd = () => {
-    router.push({ name: "AdminPracticeAddStep1" });
+    router.push({ name: "AdminPracticesAddStep1" });
 };
 </script>
 
