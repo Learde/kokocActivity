@@ -58,7 +58,13 @@ a {
 }
 
 .n-base-selection {
+  height: 44px !important;
+
   border-radius: 100px !important;
+}
+
+.n-base-selection-label {
+  height: 44px !important;
 }
 
 .roboto-flex {
