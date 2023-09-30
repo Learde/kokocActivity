@@ -1,6 +1,9 @@
 import { adminRoutes } from "./admin";
 import { authRoutes } from "./auth";
 import { mainRoutes } from "./main";
+import { practicesRoutes } from "./practices";
+import { ratingRoutes } from "./rating";
+import { summaryRoutes } from "./summary";
 import { userRoutes } from "./user";
 
 export const routes = [
@@ -8,4 +11,7 @@ export const routes = [
     ...mainRoutes,
     ...userRoutes,
     ...authRoutes,
+    ...practicesRoutes,
+    ...summaryRoutes,
+    ...ratingRoutes,
 ];

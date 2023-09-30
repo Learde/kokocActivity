@@ -7,9 +7,9 @@ import { BaseLogo } from "@/components";
         <div :class="classes.headerContent">
             <BaseLogo />
             <div>
-                <RouterLink :to="{ name: 'AuthPage' }">
+                <!-- <RouterLink :to="{ name: 'AuthPage' }">
                     <NButton type="primary" ghost> Войти </NButton>
-                </RouterLink>
+                </RouterLink> -->
             </div>
         </div>
     </header>
