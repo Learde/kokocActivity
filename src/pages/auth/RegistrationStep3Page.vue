@@ -38,7 +38,6 @@ const finishRegistration = () => {
     flex-direction: column;
 
     height: 100%;
-    padding-top: 20px;
 }
 
 .finish-button {
