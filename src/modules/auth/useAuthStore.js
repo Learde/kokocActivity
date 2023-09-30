@@ -12,7 +12,7 @@ export const useAuthStore = defineStore("auth", () => {
     });
 
     function setToken(value) {
-        cookies.set("jwt", value);
+        cookies.set("jwt", value, { maxAge: 60 * 60 * 24 });
     }
 
     return { isAuthenticated, setToken };
