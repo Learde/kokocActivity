@@ -75,3 +75,13 @@ a {
   font-family: "Roboto Flex", Roboto, sans-serif;
   font-variation-settings: 'wdth' 151, 'GRAD' 0, 'slnt' 0, 'XTRA' 468, 'XOPQ' 96, 'YOPQ' 79, 'YTLC' 514, 'YTUC' 712, 'YTAS' 750, 'YTDE' -203, 'YTFI' 738;
 }
+
+.n-button--secondary.n-button--primary-type {
+  background-color: #E8DEF8;
+}
+
+.button-round {
+  width: 40px !important;
+  height: 40px !important;
+  padding: 0 !important;
+}

@@ -9,7 +9,7 @@ export const routes = [
     {
         path: "/auth",
         name: "Auth",
-        component: () => import("./AuthTemplate.vue"),
+        component: () => import("@/components/templates/StepsTemplate.vue"),
         children: [
             {
                 path: "/login",

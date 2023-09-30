@@ -1,8 +1,9 @@
 <script setup>
 import { useRoute } from "vue-router";
 
-import { BackTemplate } from "@/components";
 import { isNil } from "@/shared";
+
+import BackTemplate from "./BackTemplate.vue";
 
 const route = useRoute();
 </script>

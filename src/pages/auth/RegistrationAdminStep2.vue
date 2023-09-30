@@ -9,7 +9,7 @@ const router = useRouter();
 
 const finishRegistration = () => {
     registrationStore.applyToken();
-    router.push({ name: "summary" });
+    router.push({ name: "AdminPractices" });
 };
 </script>
 

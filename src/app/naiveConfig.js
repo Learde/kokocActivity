@@ -31,6 +31,8 @@ export const naiveConfig = {
         paddingMedium: "22px 24px",
         fontSizeMedium: "14px",
         heightMedium: "44px",
+        paddingRoundMedium: "20px",
+        colorOpacitySecondary: "1",
     },
     Tag: {
         colorChecked: "#E8DEF8",
