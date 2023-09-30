@@ -20,7 +20,7 @@
 
     height: 100vh;
     min-height: 100vh;
-    padding: 0;
+    padding: 0 0 80px;
 
     background: var(--c-background);
 }
@@ -29,5 +29,6 @@
     width: 100%;
     height: 100%;
     padding: 16px;
+    overflow: auto;
 }
 </style>

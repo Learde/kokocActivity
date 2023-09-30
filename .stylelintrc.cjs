@@ -16,6 +16,7 @@ module.exports = {
             emptyLineBefore: "always",
             noEmptyLineBetween: false,
         })),
+        "selector-class-pattern": null,
         "selector-pseudo-class-no-unknown": [
             true,
             {
