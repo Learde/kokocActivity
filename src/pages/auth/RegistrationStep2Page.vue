@@ -1,9 +1,20 @@
 <script setup>
+import { computed, ref } from "vue";
 import { useRouter } from "vue-router";
+
+import { isNumber } from "@/shared";
 
 const router = useRouter();
 
+const gender = ref(null);
+const weight = ref(null);
+const height = ref(null);
+
 const skipStep = () => {
+    router.push({ name: "RegistrationStep3" });
+};
+
+const nextStep = () => {
     router.push({ name: "RegistrationStep3" });
 };
 
@@ -15,21 +26,39 @@ const genders = [
     { label: "Женщина", value: "female" },
     { label: "Не хочу говорить", value: "undefined" },
 ];
+
+const isRegistrationDisabled = computed(() => {
+    return !(gender.value || isNumber(weight.value) || isNumber(height.value));
+});
 </script>
 
 <template>
     <NForm class="registration-form">
         <div class="grid-2">
             <NFormItem label="Рост">
-                <NInputNumber placeholder="Введите рост" min="1" />
+                <NInputNumber
+                    placeholder="Введите рост"
+                    min="1"
+                    :show-button="false"
+                    v-model:value="height"
+                />
             </NFormItem>
             <NFormItem label="Вес">
-                <NInputNumber placeholder="Введите вес" min="1" />
+                <NInputNumber
+                    placeholder="Введите вес"
+                    min="1"
+                    :show-button="false"
+                    v-model:value="weight"
+                />
             </NFormItem>
         </div>
 
         <NFormItem label="Ваш пол">
-            <NSelect :options="genders" placeholder="Выберите пол" />
+            <NSelect
+                :options="genders"
+                placeholder="Выберите пол"
+                v-model:value="gender"
+            />
         </NFormItem>
 
         <NText class="info" depth="2">
@@ -47,7 +76,14 @@ const genders = [
         >
             Пропустить
         </NButton>
-        <NButton type="primary" block> Продолжить </NButton>
+        <NButton
+            type="primary"
+            block
+            :disabled="isRegistrationDisabled"
+            @click="nextStep"
+        >
+            Продолжить
+        </NButton>
     </NForm>
 </template>
 

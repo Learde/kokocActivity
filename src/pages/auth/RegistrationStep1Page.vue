@@ -20,6 +20,17 @@ const router = useRouter();
 const nextStep = () => {
     router.push({ name: "RegistrationStep2" });
 };
+
+const isRegistrationDisabled = computed(() => {
+    return !(
+        fio.value &&
+        String(fio.value).length > 0 &&
+        password.value &&
+        password.value.length > 0 &&
+        email.value &&
+        getEmailValidationStatus(email.value) === undefined
+    );
+});
 </script>
 
 <template>
@@ -50,6 +61,7 @@ const nextStep = () => {
             class="registration-button"
             type="primary"
             block
+            :disabled="isRegistrationDisabled"
             @click="nextStep"
         >
             Продолжить
