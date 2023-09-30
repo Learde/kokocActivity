@@ -5,4 +5,9 @@ export default [
         path: "/practices",
         component: import("./PracticesPage.vue"),
     },
+    {
+        path: "/card/:id",
+        name: "practice-card",
+        component: () => import("./PracticeCardPage.vue"),
+    },
 ];
