@@ -1,12 +1,13 @@
 <script setup>
-import { computed, ref } from "vue";
+import { storeToRefs } from "pinia";
+import { computed } from "vue";
 import { useRouter } from "vue-router";
 
 import { getEmailValidationFeedback, getEmailValidationStatus } from "./lib";
+import { useRegistrationStore } from "./useRegistrationStore";
 
-const fio = ref("");
-const email = ref("");
-const password = ref("");
+const registrationStore = useRegistrationStore();
+const { fio, email, password } = storeToRefs(registrationStore);
 
 const inputValidationStatus = computed(() => {
     return email.value ? getEmailValidationStatus(email.value) : undefined;

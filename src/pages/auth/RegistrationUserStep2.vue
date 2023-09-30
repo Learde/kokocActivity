@@ -1,14 +1,16 @@
 <script setup>
-import { computed, ref } from "vue";
+import { storeToRefs } from "pinia";
+import { computed } from "vue";
 import { useRouter } from "vue-router";
 
 import { isNumber } from "@/shared";
 
 const router = useRouter();
 
-const gender = ref(null);
-const weight = ref(null);
-const height = ref(null);
+import { useRegistrationStore } from "./useRegistrationStore";
+
+const registrationStore = useRegistrationStore();
+const { gender, weight, height } = storeToRefs(registrationStore);
 
 const skipStep = () => {
     router.push({ name: "RegistrationUserStep3" });

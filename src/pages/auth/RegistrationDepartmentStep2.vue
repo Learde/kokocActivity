@@ -1,8 +1,12 @@
 <script setup>
-import { computed, ref } from "vue";
+import { storeToRefs } from "pinia";
+import { computed } from "vue";
 import { useRouter } from "vue-router";
 
-const description = ref("");
+import { useRegistrationStore } from "./useRegistrationStore";
+
+const registrationStore = useRegistrationStore();
+const { description } = storeToRefs(registrationStore);
 
 const router = useRouter();
 

@@ -2,7 +2,10 @@
 import { ref } from "vue";
 import { useRouter } from "vue-router";
 
+import { useRegistrationStore } from "./useRegistrationStore";
+
 const router = useRouter();
+const registrationStore = useRegistrationStore();
 
 const role = ref("user");
 
@@ -26,6 +29,8 @@ const roles = [
 ];
 
 const goToRegistration = () => {
+    registrationStore.clear();
+
     if (role.value === "user") {
         router.push({ name: "RegistrationUserStep1" });
     } else if (role.value === "admin") {

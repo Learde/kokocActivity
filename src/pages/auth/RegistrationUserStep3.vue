@@ -1,12 +1,17 @@
 <script setup>
-import { ref, computed } from "vue";
+import { storeToRefs } from "pinia";
+import { computed, ref } from "vue";
 import { useRouter } from "vue-router";
 
 import { IconSearch, isNil, IconCheck } from "@/shared";
 
 const router = useRouter();
 
-const selectedDepartment = ref(null);
+import { useRegistrationStore } from "./useRegistrationStore";
+
+const registrationStore = useRegistrationStore();
+const { selectedDepartment } = storeToRefs(registrationStore);
+
 const searchField = ref("");
 
 const departments = [
