@@ -11,7 +11,7 @@ const isContinueDisabled = computed(() => {
 <template>
     <NForm class="practice-add">
         <NFormItem label="Название курса">
-            <NInput />
+            <NInput placeholder="Введите название" v-model:value="title" />
         </NFormItem>
 
         <NButton class="add-btn" type="primary" :disabled="isContinueDisabled">

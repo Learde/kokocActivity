@@ -3,11 +3,15 @@ import { useRouter } from "vue-router";
 
 const router = useRouter();
 
+import { useUserStore } from "@/modules";
+
 import { useRegistrationStore } from "./useRegistrationStore";
 
+const userStore = useUserStore();
 const registrationStore = useRegistrationStore();
 const finishRegistration = () => {
     registrationStore.applyToken();
+    userStore.role("dephead");
     router.push({ name: "summary" });
 };
 </script>

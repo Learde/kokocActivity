@@ -1,14 +1,18 @@
 <script setup>
 import { useRouter } from "vue-router";
 
+import { useUserStore } from "@/modules";
+
 import { useRegistrationStore } from "./useRegistrationStore";
 
+const userStore = useUserStore();
 const registrationStore = useRegistrationStore();
 
 const router = useRouter();
 
 const finishRegistration = () => {
     registrationStore.applyToken();
+    userStore.setRole("fundagent");
     router.push({ name: "summary" });
 };
 </script>

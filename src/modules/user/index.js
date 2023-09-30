@@ -1,1 +1,1 @@
-export { default as ProfileForm } from "./profile/ProfileForm.vue";
+export { useUserStore } from "./useUserStore";

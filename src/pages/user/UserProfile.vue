@@ -1,15 +1,7 @@
-<script setup>
-import { useRoute } from "vue-router";
-
-import { ProfileForm } from "@/modules/user";
-
-const currentRoute = useRoute();
-</script>
+<script setup></script>
 
 <template>
-    <div :class="classes.main">
-        <ProfileForm :user="Number(currentRoute.params.id)" />
-    </div>
+    <div :class="classes.main"></div>
 </template>
 
 <style module="classes" lang="scss">

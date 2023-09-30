@@ -15,7 +15,7 @@ export default [
                 name: "AdminPracticesAddStep1",
                 meta: {
                     title: "Придумайте название курса",
-                    steps: 4,
+                    steps: 5,
                     step: 1,
                     isDirectionColumn: true,
                 },

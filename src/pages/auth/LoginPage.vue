@@ -2,12 +2,13 @@
 import { ref, computed } from "vue";
 import { useRouter } from "vue-router";
 
-import { useAuthStore } from "@/modules";
+import { useAuthStore, useUserStore } from "@/modules";
 import { login } from "@/shared";
 
 import { getEmailValidationFeedback, getEmailValidationStatus } from "./lib";
 
 const authStore = useAuthStore();
+const userStore = useUserStore();
 const router = useRouter();
 
 const email = ref("");
@@ -42,9 +43,12 @@ const doLogin = async () => {
     const { token, role } = await login(authData.value);
 
     authStore.setToken(token);
+    userStore.setRole(role);
 
-    if (role === "user") {
+    if (role.toLowerCase() === "user") {
         router.push({ name: "summary" });
+    } else if (role.toLowerCase() === "admin") {
+        router.push({ name: "AdminPractices" });
     }
 
     isLoading.value = false;
