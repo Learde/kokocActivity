@@ -2,18 +2,18 @@
 import { NConfigProvider } from "naive-ui";
 import { RouterView } from "vue-router";
 
-import { TheFooter, TheMain } from "@/modules";
+import { TheFooter, TheMain, useAuthStore } from "@/modules";
 
 import { naiveConfig } from "./naiveConfig";
 
-// const authStore = useAuthStore();
+const authStore = useAuthStore();
 </script>
 
 <template>
     <NConfigProvider :theme-overrides="naiveConfig">
-        <TheMain>
+        <TheMain :has-footer="authStore.isAuthenticated">
             <RouterView />
         </TheMain>
-        <TheFooter />
+        <TheFooter v-if="authStore.isAuthenticated" />
     </NConfigProvider>
 </template>

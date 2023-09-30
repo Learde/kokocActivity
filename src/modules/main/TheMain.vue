@@ -1,7 +1,14 @@
-<script setup></script>
+<script setup>
+defineProps({
+    hasFooter: {
+        type: Boolean,
+        default: true,
+    },
+});
+</script>
 
 <template>
-    <main class="main">
+    <main class="main" :class="{ 'main-pb': hasFooter }">
         <div class="content">
             <slot />
         </div>
@@ -20,9 +27,12 @@
 
     height: 100vh;
     min-height: 100vh;
-    padding: 0 0 80px;
 
     background: var(--c-foreground);
+}
+
+.main-pb {
+    padding-bottom: 80px;
 }
 
 .content {
