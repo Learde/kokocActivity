@@ -1,13 +1,13 @@
 <script setup>
 import { useRouter } from "vue-router";
 
-import { useAuthStore } from "@/modules";
-
 const router = useRouter();
-const authStore = useAuthStore();
 
+import { useRegistrationStore } from "./useRegistrationStore";
+
+const registrationStore = useRegistrationStore();
 const finishRegistration = () => {
-    authStore.setToken("123123");
+    registrationStore.applyToken();
     router.push({ name: "summary" });
 };
 </script>

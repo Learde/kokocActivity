@@ -7,7 +7,7 @@ import { getEmailValidationFeedback, getEmailValidationStatus } from "./lib";
 import { useRegistrationStore } from "./useRegistrationStore";
 
 const registrationStore = useRegistrationStore();
-const { fio, email, password } = storeToRefs(registrationStore);
+const { fio, email, password, isLoading } = storeToRefs(registrationStore);
 
 const inputValidationStatus = computed(() => {
     return email.value ? getEmailValidationStatus(email.value) : undefined;
@@ -18,7 +18,8 @@ const inputFeedback = computed(() => {
 
 const router = useRouter();
 
-const nextStep = () => {
+const nextStep = async () => {
+    await registrationStore.registerAdmin();
     router.push({ name: "RegistrationAdminStep2" });
 };
 
@@ -35,39 +36,41 @@ const isRegistrationDisabled = computed(() => {
 </script>
 
 <template>
-    <NForm class="registration-form">
-        <NFormItem label="ФИО">
-            <NInput placeholder="Введите ФИО" v-model:value="fio" />
-        </NFormItem>
-        <NFormItem
-            label="Email"
-            :validation-status="inputValidationStatus"
-            :feedback="inputFeedback"
-        >
-            <NInput placeholder="Введите почту" v-model:value="email" />
-        </NFormItem>
-        <NFormItem label="Пароль">
-            <NInput
-                placeholder="Введите пароль"
-                type="password"
-                v-model:value="password"
-            />
-        </NFormItem>
-        <NText class="info" depth="2">
-            Эти данные позволят вам легко входить в приложение и сохранять свой
-            прогресс. Спасибо за регистрацию и присоединение к нашему
-            фитнес-сообществу!
-        </NText>
-        <NButton
-            class="registration-button"
-            type="primary"
-            block
-            :disabled="isRegistrationDisabled"
-            @click="nextStep"
-        >
-            Продолжить
-        </NButton>
-    </NForm>
+    <NSpin class="registration-wrapper" :show="isLoading">
+        <NForm class="registration-form">
+            <NFormItem label="ФИО">
+                <NInput placeholder="Введите ФИО" v-model:value="fio" />
+            </NFormItem>
+            <NFormItem
+                label="Email"
+                :validation-status="inputValidationStatus"
+                :feedback="inputFeedback"
+            >
+                <NInput placeholder="Введите почту" v-model:value="email" />
+            </NFormItem>
+            <NFormItem label="Пароль">
+                <NInput
+                    placeholder="Введите пароль"
+                    type="password"
+                    v-model:value="password"
+                />
+            </NFormItem>
+            <NText class="info" depth="2">
+                Эти данные позволят вам легко входить в приложение и сохранять
+                свой прогресс. Спасибо за регистрацию и присоединение к нашему
+                фитнес-сообществу!
+            </NText>
+            <NButton
+                class="registration-button"
+                type="primary"
+                block
+                :disabled="isRegistrationDisabled"
+                @click="nextStep"
+            >
+                Продолжить
+            </NButton>
+        </NForm>
+    </NSpin>
 </template>
 
 <style scoped lang="scss">
@@ -76,6 +79,10 @@ const isRegistrationDisabled = computed(() => {
 
     flex-direction: column;
 
+    height: 100%;
+}
+
+.registration-wrapper {
     height: 100%;
 }
 

@@ -10,7 +10,7 @@ const router = useRouter();
 import { useRegistrationStore } from "./useRegistrationStore";
 
 const registrationStore = useRegistrationStore();
-const { selectedDepartment } = storeToRefs(registrationStore);
+const { selectedDepartment, isLoading } = storeToRefs(registrationStore);
 
 const searchField = ref("");
 
@@ -65,7 +65,9 @@ const filteredDepartments = computed(() => {
     });
 });
 
-const nextStep = () => {
+const nextStep = async () => {
+    await registrationStore.registerUser();
+
     router.push({ name: "RegistrationUserStep4" });
 };
 
@@ -81,7 +83,7 @@ const selectDepartment = (department) => {
 </script>
 
 <template>
-    <div class="select-department-page">
+    <NSpin :show="isLoading" class="select-department-page">
         <NInput placeholder="Поиск" v-model:value="searchField">
             <template #prefix>
                 <IconSearch class="search-icon" />
@@ -109,7 +111,7 @@ const selectDepartment = (department) => {
         >
             Продолжить
         </NButton>
-    </div>
+    </NSpin>
 </template>
 
 <style scoped lang="scss">

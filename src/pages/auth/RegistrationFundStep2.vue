@@ -6,15 +6,12 @@ import { useRouter } from "vue-router";
 import { useRegistrationStore } from "./useRegistrationStore";
 
 const registrationStore = useRegistrationStore();
-const { description } = storeToRefs(registrationStore);
+const { description, isLoading } = storeToRefs(registrationStore);
 
 const router = useRouter();
 
-const skipStep = () => {
-    router.push({ name: "RegistrationFundStep3" });
-};
-
-const nextStep = () => {
+const nextStep = async () => {
+    await registrationStore.registerFund();
     router.push({ name: "RegistrationFundStep3" });
 };
 
@@ -24,26 +21,31 @@ const isRegistrationDisabled = computed(() => {
 </script>
 
 <template>
-    <NForm class="registration-form">
-        <NInput placeholder="Введите описание" v-model:value="description" />
-        <NButton
-            class="registration-button"
-            type="primary"
-            block
-            ghost
-            @click="skipStep"
-        >
-            Пропустить
-        </NButton>
-        <NButton
-            type="primary"
-            block
-            :disabled="isRegistrationDisabled"
-            @click="nextStep"
-        >
-            Продолжить
-        </NButton>
-    </NForm>
+    <NSpin class="registration-wrapper" :show="isLoading">
+        <NForm class="registration-form">
+            <NInput
+                placeholder="Введите описание"
+                v-model:value="description"
+            />
+            <NButton
+                class="registration-button"
+                type="primary"
+                block
+                ghost
+                @click="nextStep"
+            >
+                Пропустить
+            </NButton>
+            <NButton
+                type="primary"
+                block
+                :disabled="isRegistrationDisabled"
+                @click="nextStep"
+            >
+                Продолжить
+            </NButton>
+        </NForm>
+    </NSpin>
 </template>
 
 <style scoped lang="scss">
@@ -52,6 +54,10 @@ const isRegistrationDisabled = computed(() => {
 
     flex-direction: column;
 
+    height: 100%;
+}
+
+.registration-wrapper {
     height: 100%;
 }
 

@@ -14,3 +14,9 @@ export { deleteTest } from "./tests/deleteTest";
 // profile
 export { getProfile } from "./user/getProfile";
 export { changeProfile } from "./user/changeProfile";
+
+// auth
+export { registerUser } from "./auth/registerUser";
+export { registerAdmin } from "./auth/registerAdmin";
+export { registerFund } from "./auth/registerFund";
+export { registerDepartment } from "./auth/registerDepartment";

@@ -10,6 +10,9 @@ export const naiveConfig = {
         infoColorHover: "#003183",
         infoColorPressed: "#00296d",
     },
+    Tag: {
+        colorChecked: "#E8DEF8",
+    },
     Input: {
         borderRadius: "100px",
         heightMedium: "44px",
