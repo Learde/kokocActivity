@@ -18,7 +18,7 @@ const inputFeedback = computed(() => {
 const router = useRouter();
 
 const nextStep = () => {
-    router.push({ name: "RegistrationStep2" });
+    router.push({ name: "RegistrationUserStep2" });
 };
 
 const isRegistrationDisabled = computed(() => {

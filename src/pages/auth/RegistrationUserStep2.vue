@@ -11,11 +11,11 @@ const weight = ref(null);
 const height = ref(null);
 
 const skipStep = () => {
-    router.push({ name: "RegistrationStep3" });
+    router.push({ name: "RegistrationUserStep3" });
 };
 
 const nextStep = () => {
-    router.push({ name: "RegistrationStep3" });
+    router.push({ name: "RegistrationUserStep3" });
 };
 
 const genders = [

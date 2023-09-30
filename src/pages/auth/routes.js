@@ -1,5 +1,6 @@
 /* eslint-disable node/no-unsupported-features/es-syntax */
-export default [
+import { isArray } from "@/shared";
+export const routes = [
     {
         path: "/welcome",
         name: "Welcome",
@@ -17,31 +18,69 @@ export default [
                 component: () => import("./LoginPage.vue"),
             },
             {
-                path: "/registration/1",
-                name: "RegistrationStep1",
+                path: "/registration",
+                name: "Registration",
+                meta: { title: "Выбор роли", isDirectionColumn: true },
+                component: () => import("./RegistrationSelectRole.vue"),
+            },
+            {
+                path: "/registration/user/1",
+                name: "RegistrationUserStep1",
                 meta: {
                     title: "Давайте познакомимся",
                     step: 1,
+                    steps: 4,
                     isDirectionColumn: true,
                 },
-                component: () => import("./RegistrationStep1Page.vue"),
+                component: () => import("./RegistrationUserStep1.vue"),
             },
             {
-                path: "/registration/2",
-                name: "RegistrationStep2",
+                path: "/registration/user/2",
+                name: "RegistrationUserStep2",
                 meta: {
                     title: "Введите ваши параметры",
                     step: 2,
+                    steps: 4,
                     isDirectionColumn: true,
                 },
-                component: () => import("./RegistrationStep2Page.vue"),
+                component: () => import("./RegistrationUserStep2.vue"),
             },
             {
-                path: "/registration/3",
-                name: "RegistrationStep3",
-                meta: { noBackground: true, step: 3, isDirectionColumn: true },
-                component: () => import("./RegistrationStep3Page.vue"),
+                path: "/registration/user/3",
+                name: "RegistrationUserStep3",
+                meta: {
+                    title: "Выберите департамент",
+                    step: 3,
+                    steps: 4,
+                    isDirectionColumn: true,
+                },
+                component: () => import("./RegistrationUserStep3.vue"),
+            },
+            {
+                path: "/registration/user/4",
+                name: "RegistrationUserStep4",
+                meta: {
+                    noBackground: true,
+                    step: 4,
+                    steps: 4,
+                    isDirectionColumn: true,
+                },
+                component: () => import("./RegistrationUserStep4.vue"),
             },
         ],
     },
 ];
+
+const fillRouteNames = (names, targetRoutes) => {
+    targetRoutes.forEach((route) => {
+        names.push(route.name);
+
+        if (isArray(route.children)) fillRouteNames(names, route.children);
+    });
+};
+
+const authRouteNames = [];
+
+fillRouteNames(authRouteNames, routes);
+
+export { authRouteNames };

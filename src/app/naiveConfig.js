@@ -12,6 +12,7 @@ export const naiveConfig = {
     },
     Input: {
         borderRadius: "100px",
+        heightMedium: "44px",
     },
     Form: {
         feedbackFontSizeMedium: "11px",
@@ -29,5 +30,6 @@ export const naiveConfig = {
         borderRadiusMedium: "100px",
         paddingMedium: "22px 24px",
         fontSizeMedium: "14px",
+        heightMedium: "44px",
     },
 };

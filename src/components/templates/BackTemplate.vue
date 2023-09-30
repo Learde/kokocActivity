@@ -15,6 +15,10 @@ const props = defineProps({
         type: String,
         default: "",
     },
+    contentClass: {
+        type: String,
+        default: "",
+    },
 });
 
 const router = useRouter();
@@ -53,7 +57,7 @@ const hasTitle = computed(() => {
                 {{ route.meta.title ?? title }}
             </NH3>
         </div>
-        <div class="content">
+        <div class="content" :class="contentClass">
             <slot>
                 <RouterView />
             </slot>
@@ -112,6 +116,6 @@ const hasTitle = computed(() => {
 
 .content {
     height: 100%;
-    padding-top: 20px;
+    padding-top: 16px;
 }
 </style>

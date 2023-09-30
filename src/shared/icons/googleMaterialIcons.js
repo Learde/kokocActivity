@@ -4,3 +4,5 @@ export { default as IconDelete } from "vue-material-design-icons/TrashCanOutline
 export { default as IconEdit } from "vue-material-design-icons/PencilOutline.vue";
 export { default as IconClose } from "vue-material-design-icons/Close.vue";
 export { default as IconRubble } from "vue-material-design-icons/CurrencyRub.vue";
+export { default as IconSearch } from "vue-material-design-icons/Magnify.vue";
+export { default as IconCheck } from "vue-material-design-icons/Check.vue";

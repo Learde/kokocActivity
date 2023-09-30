@@ -4,7 +4,7 @@
     <div class="welcome-page">
         <NH1 class="roboto-flex">Тренируйтесь и помогайте</NH1>
         <NText depth="2" class="welcome-text">Фитнес, меняющий мир</NText>
-        <RouterLink class="button-link" :to="{ name: 'RegistrationStep1' }">
+        <RouterLink class="button-link" :to="{ name: 'Registration' }">
             <NButton type="primary"> Зарегистрироваться </NButton>
         </RouterLink>
         <NText depth="2">

@@ -10,18 +10,12 @@ const route = useRoute();
 <template>
     <BackTemplate>
         <template #footer>
-            <div v-if="!isNil(route.meta.step)" class="steps">
+            <div v-if="!isNil(route.meta.steps)" class="steps">
                 <div
                     class="step"
-                    :class="{ active: Number(route.meta.step) === 1 }"
-                ></div>
-                <div
-                    class="step"
-                    :class="{ active: Number(route.meta.step) === 2 }"
-                ></div>
-                <div
-                    class="step"
-                    :class="{ active: Number(route.meta.step) === 3 }"
+                    :class="{ active: Number(route.meta.step) === step }"
+                    v-for="step in route.meta.steps"
+                    :key="step"
                 ></div>
             </div>
         </template>

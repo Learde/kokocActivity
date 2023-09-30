@@ -15,3 +15,5 @@ export const routes = [
     ...summaryRoutes,
     ...ratingRoutes,
 ];
+
+export { authRouteNames } from "./auth";
