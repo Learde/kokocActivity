@@ -1,10 +1,18 @@
-<script setup></script>
+<script setup>
+import { useRouter } from "vue-router";
+
+const router = useRouter();
+
+const goTo = (name) => {
+    router.push({ name });
+};
+</script>
 
 <template>
     <div class="footer-menu">
-        <div class="block">Кнопка</div>
-        <div class="block">Кнопка</div>
-        <div class="block">Кнопка</div>
+        <div class="block" @click="goTo('summary')">Сводка</div>
+        <div class="block" @click="goTo('practices')">Курсы</div>
+        <div class="block" @click="goTo('shop')">Магазин</div>
     </div>
 </template>
 
@@ -31,6 +39,8 @@
 
         align-items: center;
         justify-content: center;
+
+        cursor: pointer;
     }
 }
 </style>

@@ -3,6 +3,10 @@ import { computed } from "vue";
 import { useRouter, useRoute } from "vue-router";
 
 const props = defineProps({
+    showBack: {
+        type: Boolean,
+        default: true,
+    },
     noBackground: {
         type: Boolean,
         default: false,
@@ -50,7 +54,7 @@ const hasTitle = computed(() => {
                 'top-menu-column': isColumn,
             }"
         >
-            <div class="top-menu-arrow">
+            <div v-if="props.showBack" class="top-menu-arrow">
                 <span class="arrow" @click="goBack">&larr;</span>
             </div>
             <NH3 v-if="hasTitle">

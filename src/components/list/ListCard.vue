@@ -13,8 +13,9 @@ defineEmits(["edit", "close", "delete", "click"]);
 <template>
     <div :class="classes.card" @click="$emit('click')">
         <div :class="classes.header">
-            <h4><slot name="title" /></h4>
+            <div><slot name="title" /></div>
             <div :class="classes.icons">
+                <slot name="tag"></slot>
                 <IconEdit
                     v-if="hasEdit"
                     :class="classes.icon"
@@ -49,7 +50,7 @@ defineEmits(["edit", "close", "delete", "click"]);
 
     width: 100%;
     min-height: 105px;
-    padding: 12px 35px;
+    padding: 12px;
 
     background: var(--c-foreground);
     border-radius: var(--border-radius);
@@ -58,6 +59,8 @@ defineEmits(["edit", "close", "delete", "click"]);
 
 .header {
     display: flex;
+
+    align-items: center;
 
     justify-content: space-between;
 
@@ -87,8 +90,6 @@ defineEmits(["edit", "close", "delete", "click"]);
 }
 
 .content {
-    margin-bottom: 20px;
-
     font-size: 15px;
 }
 
