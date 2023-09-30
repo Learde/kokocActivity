@@ -1,5 +1,21 @@
 <script setup>
+import { computed } from "vue";
 import { useRouter, useRoute } from "vue-router";
+
+const props = defineProps({
+    noBackground: {
+        type: Boolean,
+        default: false,
+    },
+    isDirectionColumn: {
+        type: Boolean,
+        default: false,
+    },
+    title: {
+        type: String,
+        default: "",
+    },
+});
 
 const router = useRouter();
 const route = useRoute();
@@ -7,6 +23,18 @@ const route = useRoute();
 const goBack = () => {
     router.go(-1);
 };
+
+const hasBackground = computed(() => {
+    return !(route.meta.noBackground ?? props.noBackground);
+});
+
+const isColumn = computed(() => {
+    return route.meta.isDirectionColumn ?? props.isDirectionColumn;
+});
+
+const hasTitle = computed(() => {
+    return Boolean(route.meta.title ?? props.title);
+});
 </script>
 
 <template>
@@ -14,17 +42,21 @@ const goBack = () => {
         <div
             class="top-menu"
             :class="{
-                'top-menu-bgc': !route.meta.noBackground,
-                'top-menu-column': route.meta.isDirectionColumn,
+                'top-menu-bgc': hasBackground,
+                'top-menu-column': isColumn,
             }"
         >
             <div class="top-menu-arrow">
                 <span class="arrow" @click="goBack">&larr;</span>
             </div>
-            <NH3 v-if="route.meta.title">{{ route.meta.title }}</NH3>
+            <NH3 v-if="hasTitle">
+                {{ route.meta.title ?? title }}
+            </NH3>
         </div>
         <div class="content">
-            <RouterView />
+            <slot>
+                <RouterView />
+            </slot>
         </div>
         <slot name="footer" />
     </div>
@@ -80,5 +112,6 @@ const goBack = () => {
 
 .content {
     height: 100%;
+    padding-top: 20px;
 }
 </style>

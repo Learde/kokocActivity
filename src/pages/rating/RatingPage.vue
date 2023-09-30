@@ -1,7 +1,7 @@
 <script setup>
 import { ref } from "vue";
 
-import { UserCard } from "@/components";
+import { UserCard, BackTemplate } from "@/components";
 
 const tabs = [
     {
@@ -26,54 +26,56 @@ const currentTab = ref("money");
 </script>
 
 <template>
-    <div class="rating-page">
-        <div class="header">
-            <div class="btn-back"></div>
-            <span class="page-title">Рейтинг</span>
-        </div>
-        <div class="list">
-            <NH2 class="title">Топ-10</NH2>
-            <div class="nav-menu">
-                <NTabs
-                    type="line"
-                    justify-content="center"
-                    defa
-                    animated
-                    :value="tabs.find((el) => el.name === currentTab.value)"
-                    :on-update:value="(val) => (currentTab = val)"
-                >
-                    <NTabPane
-                        v-for="tab in tabs"
-                        :key="tab.name"
-                        :name="tab.name"
-                        :tab="tab.tab"
+    <BackTemplate title="Рейтинг">
+        <div class="rating-page">
+            <div class="header">
+                <div class="btn-back"></div>
+                <span class="page-title">Рейтинг</span>
+            </div>
+            <div class="list">
+                <NH2 class="title">Топ-10</NH2>
+                <div class="nav-menu">
+                    <NTabs
+                        type="line"
+                        justify-content="center"
+                        defa
+                        animated
+                        :value="tabs.find((el) => el.name === currentTab.value)"
+                        :on-update:value="(val) => (currentTab = val)"
                     >
-                        <RouterView></RouterView>
-                    </NTabPane>
-                </NTabs>
+                        <NTabPane
+                            v-for="tab in tabs"
+                            :key="tab.name"
+                            :name="tab.name"
+                            :tab="tab.tab"
+                        >
+                            <RouterView></RouterView>
+                        </NTabPane>
+                    </NTabs>
+                </div>
+                <div class="users">
+                    <UserCard />
+                    <UserCard />
+                    <UserCard />
+                    <UserCard />
+                    <UserCard />
+                    <UserCard />
+                    <UserCard />
+                    <UserCard />
+                    <UserCard />
+                    <UserCard />
+                </div>
             </div>
-            <div class="users">
-                <UserCard />
-                <UserCard />
-                <UserCard />
-                <UserCard />
-                <UserCard />
-                <UserCard />
-                <UserCard />
-                <UserCard />
-                <UserCard />
-                <UserCard />
+            <div class="info">
+                <span class="title">Среднее время тренировок в день</span>
+                <NH2 class="text">1 час</NH2>
+            </div>
+            <div class="info">
+                <span class="title">Средняя сумма доната в день</span>
+                <NH2 class="text">200 купюр</NH2>
             </div>
         </div>
-        <div class="info">
-            <span class="title">Среднее время тренировок в день</span>
-            <NH2 class="text">1 час</NH2>
-        </div>
-        <div class="info">
-            <span class="title">Средняя сумма доната в день</span>
-            <NH2 class="text">200 купюр</NH2>
-        </div>
-    </div>
+    </BackTemplate>
 </template>
 
 <style scoped lang="scss">

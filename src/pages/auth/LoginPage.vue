@@ -54,7 +54,6 @@ const login = () => {
 <style scoped lang="scss">
 .login-form {
     height: 100%;
-    margin-top: 20px;
 }
 
 .login-form-restore {
