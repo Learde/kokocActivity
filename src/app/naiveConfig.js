@@ -27,7 +27,7 @@ export const naiveConfig = {
     },
     Button: {
         borderRadiusMedium: "100px",
-        paddingMedium: "10px 24px",
+        paddingMedium: "22px 24px",
         fontSizeMedium: "14px",
     },
 };

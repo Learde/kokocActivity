@@ -2,14 +2,16 @@
 
 <template>
     <div class="welcome-page">
-        <NH1>Тренируйтесь и помогайте</NH1>
-        <NText depth="2">Фитнес, меняющий мир</NText>
+        <NH1 class="roboto-flex">Тренируйтесь и помогайте</NH1>
+        <NText depth="2" class="welcome-text">Фитнес, меняющий мир</NText>
         <RouterLink class="button-link" :to="{ name: 'RegistrationStep1' }">
             <NButton type="primary"> Зарегистрироваться </NButton>
         </RouterLink>
         <NText depth="2">
             Уже зарегистрированы?
-            <RouterLink :to="{ name: 'Login' }">Войти</RouterLink>
+            <RouterLink :to="{ name: 'Login' }" #="{ navigate, href }" custom>
+                <NA :href="href" @click="navigate"> Войти </NA>
+            </RouterLink>
         </NText>
     </div>
 </template>
@@ -41,5 +43,9 @@
     & > button {
         width: 100%;
     }
+}
+
+.welcome-text {
+    font-size: 16px;
 }
 </style>

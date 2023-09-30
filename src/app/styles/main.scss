@@ -1,4 +1,5 @@
 @import "variables";
+@import "fonts";
 
 *,
 *::before,
@@ -58,4 +59,9 @@ a {
 
 .n-base-selection {
   border-radius: 100px !important;
+}
+
+.roboto-flex {
+  font-family: "Roboto Flex", Roboto, sans-serif;
+  font-variation-settings: 'wdth' 151, 'GRAD' 0, 'slnt' 0, 'XTRA' 468, 'XOPQ' 96, 'YOPQ' 79, 'YTLC' 514, 'YTUC' 712, 'YTAS' 750, 'YTDE' -203, 'YTFI' 738;
 }
