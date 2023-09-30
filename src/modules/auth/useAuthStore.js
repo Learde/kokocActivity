@@ -11,5 +11,9 @@ export const useAuthStore = defineStore("auth", () => {
         return !isNil(cookies.get("jwt"));
     });
 
-    return { isAuthenticated };
+    function setToken(value) {
+        cookies.set("jwt", value);
+    }
+
+    return { isAuthenticated, setToken };
 });
