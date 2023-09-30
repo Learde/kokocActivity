@@ -1,9 +1,39 @@
 <script setup>
+import { useMessage, useDialog } from "naive-ui";
 import { ref } from "vue";
+import { useRouter, useRoute } from "vue-router";
 
 import { BackTemplate } from "@/components";
 
 const days = ref([]);
+
+const message = useMessage();
+const dialog = useDialog();
+
+const router = useRouter();
+const route = useRoute();
+
+const next = () => {
+    router.push({ name: "practice-confirm", params: { id: route.params.id } });
+};
+
+const handleConfirm = () => {
+    dialog.warning({
+        title: "Напоминание",
+        content:
+            "Сохраните расписание в своем календаре и не пропустите ни одной тренировки!",
+        positiveText: "Импорт в календарь",
+        negativeText: "пропустить",
+        onPositiveClick: () => {
+            message.success("Sure");
+            next();
+        },
+        onNegativeClick: () => {
+            message.error("Not Sure");
+            next();
+        },
+    });
+};
 </script>
 
 <template>
@@ -26,7 +56,7 @@ const days = ref([]);
             </NCheckboxGroup>
 
             <div class="footer">
-                <NButton class="btn-next" type="primary" @click="next"
+                <NButton class="btn-next" type="primary" @click="handleConfirm"
                     >Продолжить</NButton
                 >
             </div>

@@ -20,4 +20,9 @@ export default [
         name: "practice-calendar",
         component: () => import("./PracticeCalendar.vue"),
     },
+    {
+        path: "/practice/confirm/:id",
+        name: "practice-confirm",
+        component: () => import("./PracticeConfirm.vue"),
+    },
 ];
