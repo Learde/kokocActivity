@@ -3,7 +3,7 @@ import { useMessage, useDialog } from "naive-ui";
 import { ref } from "vue";
 import { useRouter, useRoute } from "vue-router";
 
-import { BackTemplate } from "@/components";
+import { BackTemplate, usePracticeStore } from "@/components";
 
 const days = ref([]);
 
@@ -13,11 +13,18 @@ const dialog = useDialog();
 const router = useRouter();
 const route = useRoute();
 
+const store = usePracticeStore();
+
 const next = () => {
     router.push({ name: "practice-confirm", params: { id: route.params.id } });
 };
 
+const confirm = async () => {
+    await store.confirm(route.params.id, route.params.fund, days.value);
+};
+
 const handleConfirm = () => {
+    confirm();
     dialog.warning({
         title: "Напоминание",
         content:
@@ -45,13 +52,13 @@ const handleConfirm = () => {
             </div>
             <NCheckboxGroup v-model:value="days">
                 <div class="items">
-                    <NCheckbox value="1" label="Понедельник" size="large" />
-                    <NCheckbox value="2" label="Вторник" size="large" />
-                    <NCheckbox value="3" label="Среда" size="large" />
-                    <NCheckbox value="4" label="Чертверг" size="large" />
-                    <NCheckbox value="5" label="Пятница" size="large" />
-                    <NCheckbox value="6" label="Суббота" size="large" />
-                    <NCheckbox value="7" label="Воскресенье" size="large" />
+                    <NCheckbox value="0" label="Понедельник" size="large" />
+                    <NCheckbox value="1" label="Вторник" size="large" />
+                    <NCheckbox value="2" label="Среда" size="large" />
+                    <NCheckbox value="3" label="Чертверг" size="large" />
+                    <NCheckbox value="4" label="Пятница" size="large" />
+                    <NCheckbox value="5" label="Суббота" size="large" />
+                    <NCheckbox value="6" label="Воскресенье" size="large" />
                 </div>
             </NCheckboxGroup>
 

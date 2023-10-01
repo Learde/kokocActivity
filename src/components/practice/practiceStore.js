@@ -1,7 +1,7 @@
 import { defineStore } from "pinia";
 import { ref } from "vue";
 
-import { getPractices, getPractice } from "@/shared";
+import { getPractices, getPractice, confirmPractice } from "@/shared";
 
 export const usePracticeStore = defineStore("practiceStore", () => {
     const practices = ref([]);
@@ -25,5 +25,18 @@ export const usePracticeStore = defineStore("practiceStore", () => {
         return data;
     }
 
-    return { loading, practices, fetchPractices, practiceById };
+    async function confirm(id, fund, days) {
+        loading.value = true;
+        const data = await confirmPractice({
+            courseId: id,
+            fundId: fund,
+            days,
+        });
+
+        console.log(data);
+        practices.value = data;
+        loading.value = false;
+    }
+
+    return { loading, practices, fetchPractices, practiceById, confirm };
 });

@@ -10,15 +10,18 @@ const route = useRoute();
 
 import { useFundStore } from "@/components/fund";
 
-const next = () => {
-    router.push({ name: "practice-calendar", params: { id: route.params.id } });
-};
-
 const selected = ref("");
 
 const store = useFundStore();
 
 const { fundes, loading } = storeToRefs(store);
+
+const next = () => {
+    router.push({
+        name: "practice-calendar",
+        params: { id: route.params.id, fund: selected.value },
+    });
+};
 
 onMounted(async () => {
     await store.fetchFundes();
@@ -45,7 +48,11 @@ onMounted(async () => {
                 />
 
                 <div class="footer">
-                    <NButton class="btn-next" type="primary" @click="next"
+                    <NButton
+                        class="btn-next"
+                        type="primary"
+                        :disabled="!selected"
+                        @click="next"
                         >Продолжить</NButton
                     >
                 </div>

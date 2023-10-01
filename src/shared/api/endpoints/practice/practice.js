@@ -21,3 +21,13 @@ export const getPractice = async (id) => {
 
     return response;
 };
+
+export const confirmPractice = async (params) => {
+    const response = await makeHttpRequest({
+        url: `/courses/attach/${params.courseId}`,
+        method: "post",
+        data: params,
+    });
+
+    return response;
+};

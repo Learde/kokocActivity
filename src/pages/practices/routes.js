@@ -16,7 +16,7 @@ export default [
         component: () => import("./PracticeFund.vue"),
     },
     {
-        path: "/practice/calendar/:id",
+        path: "/practice/calendar/:id/:fund",
         name: "practice-calendar",
         component: () => import("./PracticeCalendar.vue"),
     },
