@@ -13,12 +13,21 @@ const singUpPractice = () => {
 };
 
 const practice = ref(null);
+const attach = ref(false);
 const store = usePracticeStore();
 
 const { loading } = storeToRefs(store);
 
 onMounted(async () => {
     practice.value = await store.practiceById(route.params.id);
+    const userPractices = await store.fetchUserPractices();
+
+    console.log(userPractices, practice);
+
+    if (userPractices.map((el) => el.id).includes(practice.value.id)) {
+        attach.value = true;
+        console.log("OK");
+    }
 });
 </script>
 
@@ -45,17 +54,30 @@ onMounted(async () => {
                     </NTag>
                 </div>
                 <div class="main-title">Упражнения</div>
+                <div class="main-title">
+                    К сожалению, в данный момент упражнения недоступны,
+                    поскольку интеграция с таким серьезным решением как Fora
+                    Vision требует немного больше времени, чем 2 дня
+                </div>
                 <div class="trainings">
-                    <img class="img-mini" src="/src/shared/images/yoga.png" />
-                    <img class="img-mini" src="/src/shared/images/yoga.png" />
-                    <img class="img-mini" src="/src/shared/images/yoga.png" />
-                    <img class="img-mini" src="/src/shared/images/yoga.png" />
+                    <img class="img-mini" src="/src/shared/images/exer.png" />
+                    <img class="img-mini" src="/src/shared/images/exer.png" />
+                    <img class="img-mini" src="/src/shared/images/exer.png" />
+                    <img class="img-mini" src="/src/shared/images/exer.png" />
                 </div>
             </div>
         </BackTemplate>
         <div class="footer-container">
-            <NButton class="btn" type="primary" @click="singUpPractice">
+            <NButton
+                v-if="!attach"
+                class="btn"
+                type="primary"
+                @click="singUpPractice"
+            >
                 Записаться
+            </NButton>
+            <NButton v-else class="btn" type="primary" @click="singUpPractice">
+                Приступить к занятию
             </NButton>
         </div>
     </NSpin>

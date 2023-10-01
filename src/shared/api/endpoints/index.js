@@ -45,6 +45,7 @@ export { addPractice } from "./practice/addPractice";
 export { editPractice } from "./practice/editPractice";
 export { removePractice } from "./practice/removePractice";
 export { addTrainingToPractice } from "./practice/addTrainingToPractice";
+export { getUserPractices } from "./practice/practice";
 
 // funds
 export { getFundes } from "./fundes/fundes";

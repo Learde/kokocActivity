@@ -1,7 +1,8 @@
 <script setup>
-import { useRouter } from "vue-router";
+import { useRouter, useRoute } from "vue-router";
 
 const router = useRouter();
+const route = useRoute();
 
 defineProps({
     isAdmin: {
@@ -10,6 +11,8 @@ defineProps({
     },
 });
 
+console.log(route);
+
 const goTo = (name) => {
     router.push({ name });
 };
@@ -17,18 +20,44 @@ const goTo = (name) => {
 
 <template>
     <div class="footer-menu">
-        <div class="block" @click="goTo('summary')">Сводка</div>
         <div
             class="block"
+            :class="{ selected: route.name === 'summary' }"
+            @click="goTo('summary')"
+        >
+            <img class="mini-img" src="/src/shared/images/star.svg" />
+            <span>Сводка</span>
+        </div>
+        <div
+            class="block"
+            :class="{
+                selected:
+                    route.name === 'AdminPractices' || route.name === 'practices' || route.name === 'practice',
+            }"
             @click="goTo(isAdmin ? 'AdminPractices' : 'practices')"
         >
-            Курсы
+            <img class="mini-img" src="/src/shared/images/list.svg" />
+            <span> Курсы </span>
         </div>
 
-        <div v-if="isAdmin" class="block" @click="goTo('AdminSettings')">
-            Управление
+        <div
+            v-if="isAdmin"
+            :class="{ selected: route.name === 'AdminSettings' }"
+            class="block"
+            @click="goTo('AdminSettings')"
+        >
+            <img class="mini-img" src="/src/shared/images/admin.svg" />
+            <span> Управление </span>
         </div>
-        <div v-else class="block" @click="goTo('shop')">Магазин</div>
+        <div
+            v-else
+            class="block"
+            :class="{ selected: route.name === 'shop' }"
+            @click="goTo('shop')"
+        >
+            <img class="mini-img" src="/src/shared/images/shop.svg" />
+            <span> Магазин </span>
+        </div>
     </div>
 </template>
 

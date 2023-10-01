@@ -2,11 +2,19 @@
 import { useRouter } from "vue-router";
 
 import { UserCard } from "@/components";
+import { useAuthStore } from "@/modules";
+import { IconLogout } from "@/shared";
 
 const router = useRouter();
+const store = useAuthStore();
 
 const toRating = () => {
     router.push({ name: "rating" });
+};
+
+const logOut = () => {
+    store.removeToken();
+    location.reload();
 };
 </script>
 
@@ -14,7 +22,7 @@ const toRating = () => {
     <div>
         <div class="header">
             <NH2 class="title roboto-flex">Сводка</NH2>
-            <NAvatar round size="small" class="avatar" />
+            <IconLogout @click="logOut" />
         </div>
         <div class="main">
             <NH3 class="active roboto-flex">Активность</NH3>
