@@ -1,4 +1,5 @@
 <script setup>
+import { ref } from "vue";
 import { useRouter, useRoute } from "vue-router";
 
 import { BackTemplate, FundCard } from "@/components";
@@ -9,6 +10,8 @@ const route = useRoute();
 const next = () => {
     router.push({ name: "practice-calendar", params: { id: route.params.id } });
 };
+
+const selected = ref("");
 </script>
 
 <template>
@@ -19,10 +22,7 @@ const next = () => {
                 Выберите фонд, чтобы сделать вашу тренировку еще значимее. Ваш
                 выбор поможет тем, кто в нем нуждается.
             </div>
-            <FundCard />
-            <FundCard />
-            <FundCard />
-            <FundCard />
+            <FundCard @click="selected = 'xdd'" />
 
             <div class="footer">
                 <NButton class="btn-next" type="primary" @click="next"

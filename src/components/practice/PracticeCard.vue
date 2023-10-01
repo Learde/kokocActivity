@@ -8,6 +8,10 @@ const props = defineProps({
         type: Boolean,
         default: false,
     },
+    practice: {
+        type: Object,
+        required: true,
+    },
 });
 
 const router = useRouter();
@@ -18,16 +22,16 @@ const toCard = (id) => {
 
 <template>
     <div>
-        <ListCard class="card" @click="toCard('1')">
+        <ListCard class="card" @click="toCard(practice.id)">
             <template #title>
-                <span v-if="!props.small" class="card-title roboto-flex"
-                    >Гармония тела и души</span
-                >
+                <span v-if="!props.small" class="card-title roboto-flex">{{
+                    props.practice.name
+                }}</span>
                 <div v-else class="name">
                     <img class="mini-img" src="/src/shared/images/yoga.png" />
-                    <span class="card-title roboto-flex"
-                        >Гармония тела и души</span
-                    >
+                    <span class="card-title roboto-flex">{{
+                        props.practice.name
+                    }}</span>
                 </div>
             </template>
             <template #tag>
@@ -47,11 +51,13 @@ const toCard = (id) => {
                 </div>
                 <div class="footer-item">
                     <span class="title"> 💸 Купюры </span>
-                    <span class="value"> 200 шт. </span>
+                    <span class="value"> {{ props.practice.totalCost }} </span>
                 </div>
                 <div class="footer-item">
                     <span class="title"> 🪙 Монеты </span>
-                    <span class="value"> 20 шт. </span>
+                    <span class="value">
+                        {{ props.practice.totalCost / 10 }}
+                    </span>
                 </div>
             </template>
         </ListCard>

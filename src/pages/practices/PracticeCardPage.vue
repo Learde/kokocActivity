@@ -1,7 +1,9 @@
 <script setup>
+import { storeToRefs } from "pinia";
+import { ref, onMounted } from "vue";
 import { useRouter, useRoute } from "vue-router";
 
-import { BackTemplate } from "@/components";
+import { BackTemplate, usePracticeStore } from "@/components";
 
 const router = useRouter();
 const route = useRoute();
@@ -9,40 +11,54 @@ const route = useRoute();
 const singUpPractice = () => {
     router.push({ name: "practice-fund", params: { id: route.params.id } });
 };
+
+const practice = ref(null);
+const store = usePracticeStore();
+
+const { loading } = storeToRefs(store);
+
+onMounted(async () => {
+    practice.value = await store.practiceById(route.params.id);
+});
 </script>
 
 <template>
-    <BackTemplate title="Курс Какой-то" noBackground>
-        <div class="practice-card">
-            <img class="img" src="/src/shared/images/yoga.png" />
-            <div class="main-title">О курсе</div>
-            <div class="desc">
-                Здесь вас ждет увлекательное путешествие к гармонии тела и души
-                через искусство йоги. Наш курс создан для тех, кто ищет способ
-                укрепить свое тело, улучшить гибкость и приобрести навыки для
-                внутренней релаксации и спокойствия.
+    <NSpin :show="loading">
+        <BackTemplate
+            v-if="!loading && practice"
+            :title="practice.name"
+            noBackground
+        >
+            <div class="practice-card">
+                <img class="img" src="/src/shared/images/yoga.png" />
+                <div class="main-title">О курсе</div>
+                <div class="desc">
+                    {{ practice.description }}
+                </div>
+                <div class="main-title">Длительность</div>
+                <div class="desc">Курс займет 2 недели</div>
+                <div class="main-title">Награды</div>
+                <div class="tags">
+                    <NTag checked checkable> 💸 {{ practice.totalCost }} </NTag>
+                    <NTag checked checkable>
+                        🪙 {{ practice.totalCost / 10 }}
+                    </NTag>
+                </div>
+                <div class="main-title">Упражнения</div>
+                <div class="trainings">
+                    <img class="img-mini" src="/src/shared/images/yoga.png" />
+                    <img class="img-mini" src="/src/shared/images/yoga.png" />
+                    <img class="img-mini" src="/src/shared/images/yoga.png" />
+                    <img class="img-mini" src="/src/shared/images/yoga.png" />
+                </div>
             </div>
-            <div class="main-title">Длительность</div>
-            <div class="desc">Курс займет 2 недели</div>
-            <div class="main-title">Награды</div>
-            <div class="tags">
-                <NTag checked checkable> 💸 100 </NTag>
-                <NTag checked checkable> 🪙 200 </NTag>
-            </div>
-            <div class="main-title">Упражнения</div>
-            <div class="trainings">
-                <img class="img-mini" src="/src/shared/images/yoga.png" />
-                <img class="img-mini" src="/src/shared/images/yoga.png" />
-                <img class="img-mini" src="/src/shared/images/yoga.png" />
-                <img class="img-mini" src="/src/shared/images/yoga.png" />
-            </div>
+        </BackTemplate>
+        <div class="footer-container">
+            <NButton class="btn" type="primary" @click="singUpPractice">
+                Записаться
+            </NButton>
         </div>
-    </BackTemplate>
-    <div class="footer-container">
-        <NButton class="btn" type="primary" @click="singUpPractice">
-            Записаться
-        </NButton>
-    </div>
+    </NSpin>
 </template>
 
 <style scoped lang="scss">

@@ -1,15 +1,15 @@
 <script setup>
+import { storeToRefs } from "pinia";
 import { ref, onMounted } from "vue";
 
 import { PracticeCard, usePracticeStore } from "@/components";
 
 const store = usePracticeStore();
 
-// const loading = ref(true);
+const { practices, loading } = storeToRefs(store);
 
-onMounted(() => {
-    store.fetchPractices();
-    console.log(store.practices);
+onMounted(async () => {
+    await store.fetchPractices();
 });
 
 const tags = [
@@ -36,32 +36,44 @@ const updateTag = (val) => {
 </script>
 
 <template>
-    <div class="prictices">
-        <div class="main-title roboto-flex">
-            Тренировки, которые пользуются популярностью
+    <NSpin :show="loading">
+        <div v-if="!loading" class="prictices">
+            <div class="main-title roboto-flex">
+                Тренировки, которые пользуются популярностью
+            </div>
+            <div class="popular-cards">
+                <PracticeCard
+                    v-for="practice in practices"
+                    :key="practice.id"
+                    :practice="practice"
+                    small
+                />
+            </div>
+            <div class="main-title tags-title roboto-flex">
+                Найдите занятие по душе!
+            </div>
+            <div class="tags">
+                <NTag
+                    v-for="tag in tags"
+                    :key="tag.id"
+                    :checked="tag.id === checked.value"
+                    checkable
+                    :class="{ 'n-tag--active': tag.id === checked }"
+                    @click="updateTag(tag.id)"
+                >
+                    {{ tag.name }}
+                </NTag>
+            </div>
+            <div class="all-cards">
+                <PracticeCard
+                    v-for="practice in practices"
+                    :key="practice.id"
+                    :practice="practice"
+                    small
+                />
+            </div>
         </div>
-        <div class="popular-cards">
-            <PracticeCard />
-        </div>
-        <div class="main-title tags-title roboto-flex">
-            Найдите занятие по душе!
-        </div>
-        <div class="tags">
-            <NTag
-                v-for="tag in tags"
-                :key="tag.id"
-                :checked="tag.id === checked.value"
-                checkable
-                :class="{ 'n-tag--active': tag.id === checked }"
-                @click="updateTag(tag.id)"
-            >
-                {{ tag.name }}
-            </NTag>
-        </div>
-        <div class="all-cards">
-            <PracticeCard small />
-        </div>
-    </div>
+    </NSpin>
 </template>
 
 <style lang="scss" scoped>
@@ -75,6 +87,8 @@ const updateTag = (val) => {
 
 .popular-cards {
     display: flex;
+
+    gap: 15px;
 
     padding: 10px 0;
 

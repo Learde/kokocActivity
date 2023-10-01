@@ -1,5 +1,12 @@
 <script setup>
 import { ListCard } from "@/components";
+
+// const props = defineProps({
+//     fund: {
+//         type: Object,
+//         required: true,
+//     },
+// });
 </script>
 
 <template>
