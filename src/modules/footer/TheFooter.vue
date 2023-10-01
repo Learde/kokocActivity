@@ -32,7 +32,9 @@ const goTo = (name) => {
             class="block"
             :class="{
                 selected:
-                    route.name === 'AdminPractices' || route.name === 'practices' || route.name === 'practice',
+                    route.name === 'AdminPractices' ||
+                    route.name === 'practices' ||
+                    route.name === 'practice',
             }"
             @click="goTo(isAdmin ? 'AdminPractices' : 'practices')"
         >
