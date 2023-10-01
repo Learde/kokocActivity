@@ -5,3 +5,4 @@ export * from "./user";
 export * from "./templates";
 export * from "./practice";
 export * from "./fund";
+export * from "./rating";

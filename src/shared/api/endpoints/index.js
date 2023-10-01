@@ -45,3 +45,6 @@ export { getUserPractices } from "./practice/practice";
 
 //fundes
 export { getFundes } from "./fundes/fundes";
+
+//rating
+export { getRating } from "./rating/rating";

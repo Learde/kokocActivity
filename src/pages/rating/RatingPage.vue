@@ -1,81 +1,85 @@
 <script setup>
-import { ref } from "vue";
+import { storeToRefs } from "pinia";
+import { ref, onMounted } from "vue";
 
-import { UserCard, BackTemplate } from "@/components";
+import { UserCard, BackTemplate, useRatingStore } from "@/components";
+
+const store = useRatingStore();
+const { loading } = storeToRefs(store);
 
 const tabs = [
     {
-        name: "money",
+        name: "top10tmoney",
         tab: "Заработанные деньги",
     },
     {
-        name: "calories",
-        tab: "Сожженые калории",
-    },
-    {
-        name: "averageTime",
-        tab: "Среднее время тренировок",
-    },
-    {
-        name: "averageDonat",
-        tab: "Средний донат",
+        name: "top10train",
+        tab: "Тренировки",
     },
 ];
 
-const currentTab = ref("money");
+onMounted(() => {
+    console.log(loading);
+});
+
+const currentTab = ref("top10tmoney");
 </script>
 
 <template>
-    <BackTemplate title="Рейтинг" noBackground>
-        <div class="rating-page">
-            <div class="list">
-                <NH2 class="title roboto-flex">Топ-10</NH2>
-                <div class="nav-menu">
-                    <NTabs
-                        type="line"
-                        justify-content="center"
-                        defa
-                        animated
-                        :value="tabs.find((el) => el.name === currentTab.value)"
-                        :on-update:value="(val) => (currentTab = val)"
-                    >
-                        <NTabPane
-                            v-for="tab in tabs"
-                            :key="tab.name"
-                            :name="tab.name"
-                            :tab="tab.tab"
+    <NSpin :show="false">
+        <BackTemplate v-if="true" title="Рейтинг" noBackground>
+            <div class="rating-page">
+                <div class="list">
+                    <NH2 class="title roboto-flex">Топ-10</NH2>
+                    <div class="nav-menu">
+                        <NTabs
+                            type="line"
+                            justify-content="center"
+                            defa
+                            animated
+                            :value="
+                                tabs.find((el) => el.name === currentTab.value)
+                            "
+                            :on-update:value="(val) => (currentTab = val)"
                         >
-                            <RouterView></RouterView>
-                        </NTabPane>
-                    </NTabs>
+                            <NTabPane
+                                v-for="tab in tabs"
+                                :key="tab.name"
+                                :name="tab.name"
+                                :tab="tab.tab"
+                            >
+                                <RouterView></RouterView>
+                            </NTabPane>
+                        </NTabs>
+                    </div>
+                    <div class="users">
+                        <UserCard :type="currentTab" />
+                        <UserCard />
+                        <UserCard />
+                        <UserCard />
+                        <UserCard />
+                        <UserCard />
+                        <UserCard />
+                        <UserCard />
+                        <UserCard />
+                        <UserCard />
+                    </div>
                 </div>
-                <div class="users">
-                    <UserCard :type="currentTab" />
-                    <UserCard />
-                    <UserCard />
-                    <UserCard />
-                    <UserCard />
-                    <UserCard />
-                    <UserCard />
-                    <UserCard />
-                    <UserCard />
-                    <UserCard />
+                <div class="info">
+                    <span class="title roboto-flex"
+                        >Среднее время тренировок в день</span
+                    >
+                    <NH2 class="text roboto-flex">1 час</NH2>
+                </div>
+                <div class="info">
+                    <span class="title roboto-flex"
+                        >Средняя сумма доната в день</span
+                    >
+                    <NH2 class="text roboto-flex">200 купюр</NH2>
                 </div>
             </div>
-            <div class="info">
-                <span class="title roboto-flex"
-                    >Среднее время тренировок в день</span
-                >
-                <NH2 class="text roboto-flex">1 час</NH2>
-            </div>
-            <div class="info">
-                <span class="title roboto-flex"
-                    >Средняя сумма доната в день</span
-                >
-                <NH2 class="text roboto-flex">200 купюр</NH2>
-            </div>
-        </div>
-    </BackTemplate>
+        </BackTemplate>
+    </NSpin>
 </template>
 
 <style scoped lang="scss">
