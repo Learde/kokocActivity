@@ -4,12 +4,13 @@ import { useRouter } from "vue-router";
 
 import { BackTemplate } from "@/components";
 import {
-    addExercise,
-    removeExercise,
-    editExercise,
-    getExercise,
+    addTraining,
+    removeTraining,
+    editTraining,
+    getTraining,
     isNil,
     IconDelete,
+    IconPlus,
 } from "@/shared";
 
 const props = defineProps({
@@ -23,11 +24,8 @@ const router = useRouter();
 
 const isLoading = ref(false);
 
-const exercise = ref({
+const training = ref({
     name: "",
-    description: "",
-    cost_per_retry: null,
-    cost_per_retry_coins: null,
     training_type: null,
 });
 
@@ -54,37 +52,44 @@ const isEdit = computed(() => {
     return !isNil(props.id);
 });
 
+const reload = async () => {
+    isLoading.value = true;
+
+    training.value = await getTraining(props.id);
+
+    isLoading.value = false;
+};
+
 const remove = async () => {
     isLoading.value = true;
-    await removeExercise(props.id);
+    await removeTraining(props.id);
     isLoading.value = false;
 
-    router.push({ name: "AdminExercises" });
+    router.push({ name: "AdminTrainings" });
 };
 
 const edit = async () => {
     isLoading.value = true;
-    await editExercise(props.id, exercise.value);
+    await editTraining(props.id, training.value);
     isLoading.value = false;
 
-    router.push({ name: "AdminExercises" });
+    reload();
 };
 
 const add = async () => {
     isLoading.value = true;
-    await addExercise(exercise.value);
+    const { id } = await addTraining(training.value);
+
     isLoading.value = false;
 
-    router.push({ name: "AdminExercises" });
+    await router.push({ name: "AdminTrainingEdit", params: { id } });
+
+    reload();
 };
 
 onMounted(async () => {
     if (isEdit.value) {
-        isLoading.value = true;
-
-        exercise.value = await getExercise(props.id);
-
-        isLoading.value = false;
+        reload();
     }
 });
 </script>
@@ -93,7 +98,7 @@ onMounted(async () => {
     <NSpin :show="isLoading">
         <BackTemplate
             :title="
-                isEdit ? 'Редактирование упражнения' : 'Создание упражнения'
+                isEdit ? 'Редактирование тренировки' : 'Создание тренировки'
             "
             no-background
         >
@@ -104,46 +109,26 @@ onMounted(async () => {
                 <NFormItem label="Название">
                     <NInput
                         placeholder="Введите название"
-                        v-model:value="exercise.name"
-                    />
-                </NFormItem>
-                <NFormItem label="Описание">
-                    <NInput
-                        type="textarea"
-                        placeholder="Введите описание"
-                        class="textarea"
-                        v-model:value="exercise.description"
+                        v-model:value="training.name"
                     />
                 </NFormItem>
                 <NFormItem label="Тип">
                     <NSelect
                         placeholder="Выберите тип"
                         :options="options"
-                        v-model:value="exercise.training_type"
+                        v-model:value="training.training_type"
                     />
                 </NFormItem>
-                <div class="grid-2">
-                    <NFormItem label="Кол-во купюр">
-                        <NInputNumber
-                            :show-button="false"
-                            min="0"
-                            placeholder="Например, 5"
-                            v-model:value="exercise.cost_per_retry"
-                        />
-                    </NFormItem>
-                    <NFormItem label="Кол-во монет">
-                        <NInputNumber
-                            :show-button="false"
-                            min="0"
-                            placeholder="Например, 25"
-                            v-model:value="exercise.cost_per_retry_coins"
-                        />
-                    </NFormItem>
+                <div v-if="isEdit">
+                    <NH4 class="roboto-flex h4">Упражнения</NH4>
+                    <NText class="info" depth="2">
+                        Итоговая стоимость: 200 купюр 💸 20 монет 🪙
+                    </NText>
+                    <NButton class="add-exercise" type="primary" ghost block>
+                        <IconPlus class="training-plus" />
+                        Добавить упражнения
+                    </NButton>
                 </div>
-                <NText class="info" depth="2">
-                    От этого зависит, сколько у пользователей по итогу будет
-                    валюты. Это цена за одно повторение.
-                </NText>
                 <NButton
                     v-if="!isEdit"
                     class="mt"
@@ -162,6 +147,10 @@ onMounted(async () => {
 </template>
 
 <style scoped lang="scss">
+.h4 {
+    margin-bottom: 4px;
+}
+
 .textarea {
     border-radius: 12px;
 }
@@ -175,11 +164,26 @@ onMounted(async () => {
 }
 
 .info {
+    display: inline-block;
+
+    margin-bottom: 12px;
+
     font-size: 12px;
     line-height: 16px;
 }
 
 .mt {
     margin-top: 24px;
+}
+
+.training-plus {
+    position: relative;
+    bottom: 1px;
+
+    margin-right: 8px;
+}
+
+.add-exercise {
+    margin-top: 8px;
 }
 </style>

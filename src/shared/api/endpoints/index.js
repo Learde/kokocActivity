@@ -28,3 +28,10 @@ export { addExercise } from "./exercises/addExercise";
 export { removeExercise } from "./exercises/removeExercise";
 export { editExercise } from "./exercises/editExercise";
 export { getExercise } from "./exercises/getExercise";
+
+// trainings
+export { getTrainings } from "./trainings/getTrainings";
+export { addTraining } from "./trainings/addTraining";
+export { removeTraining } from "./trainings/removeTraining";
+export { editTraining } from "./trainings/editTraining";
+export { getTraining } from "./trainings/getTraining";

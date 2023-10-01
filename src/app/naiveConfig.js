@@ -20,6 +20,7 @@ export const naiveConfig = {
     Typography: {
         headerFontSize1: "32px",
         headerFontSize3: "24px",
+        headerFontSize4: "20px",
         headerMargin3: "0",
         headerMargin2: "0",
         headerTextColor: "#1D1B20",

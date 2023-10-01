@@ -44,4 +44,20 @@ export default [
         props: true,
         component: () => import("./AdminExerciseEditor.vue"),
     },
+    {
+        path: "/admin/trainings",
+        name: "AdminTrainings",
+        component: () => import("./AdminTrainings.vue"),
+    },
+    {
+        path: "/admin/training/add",
+        name: "AdminTrainingAdd",
+        component: () => import("./AdminTrainingEditor.vue"),
+    },
+    {
+        path: "/admin/training/edit/:id",
+        name: "AdminTrainingEdit",
+        props: true,
+        component: () => import("./AdminTrainingEditor.vue"),
+    },
 ];

@@ -61,7 +61,7 @@ const hasTitle = computed(() => {
             <div v-if="props.showBack" class="top-menu-arrow">
                 <span class="arrow" @click="goBack">&larr;</span>
             </div>
-            <NH3 v-if="hasTitle">
+            <NH3 v-if="hasTitle" class="roboto-flex">
                 {{ route.meta.title ?? title }}
             </NH3>
             <slot name="action" />

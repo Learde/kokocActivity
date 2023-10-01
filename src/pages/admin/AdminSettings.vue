@@ -21,7 +21,7 @@ const goTo = (name) => {
             <span>Настроить упражнения</span>
             <IconMenuRight />
         </div>
-        <div class="admin-settings">
+        <div class="admin-settings" @click="goTo('AdminTrainings')">
             <span>Настроить тренировки</span>
             <IconMenuRight />
         </div>
