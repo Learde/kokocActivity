@@ -11,6 +11,17 @@ export const getPractices = async () => {
     return response;
 };
 
+export const getUserPractices = async () => {
+    const response = (
+        await makeHttpRequest({
+            url: "/courses/user",
+            method: "GET",
+        })
+    ).data;
+
+    return response;
+};
+
 export const getPractice = async (id) => {
     const response = (
         await makeHttpRequest({

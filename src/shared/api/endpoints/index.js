@@ -41,6 +41,7 @@ export { addExerciseToTraining } from "./trainings/addExerciseToTraining";
 export { getPractices } from "./practice/practice";
 export { getPractice } from "./practice/practice";
 export { confirmPractice } from "./practice/practice";
+export { getUserPractices } from "./practice/practice";
 
 //fundes
 export { getFundes } from "./fundes/fundes";

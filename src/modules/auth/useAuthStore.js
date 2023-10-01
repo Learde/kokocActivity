@@ -20,9 +20,14 @@ export const useAuthStore = defineStore("auth", () => {
         apiSetToken(value);
     }
 
+    function removeToken() {
+        cookies.set("jwt", null, { maxAge: 0 });
+        apiSetToken(null);
+    }
+
     onMounted(() => {
         apiSetToken(token.value);
     });
 
-    return { isAuthenticated, setToken };
+    return { isAuthenticated, setToken, removeToken };
 });
