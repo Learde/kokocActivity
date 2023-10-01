@@ -3,9 +3,9 @@
  */
 export const naiveConfig = {
     common: {
-        primaryColor: "rgba(68, 105, 0, 1)",
-        primaryColorHover: "#ff3148",
-        primaryColorPressed: "#ff233c",
+        primaryColor: "#B5F63C",
+        primaryColorHover: "#B5F63C",
+        primaryColorPressed: "#B5F63C",
         infoColor: "#003791",
         infoColorHover: "#003183",
         infoColorPressed: "#00296d",
@@ -34,6 +34,12 @@ export const naiveConfig = {
         heightMedium: "44px",
         paddingRoundMedium: "20px",
         colorOpacitySecondary: "1",
+        textColor: "#131F00",
+        textColorPrimary: "#131F00",
+        colorTertiary: "#446900",
+        colorTertiaryHover: "#446900",
+        colorTertiaryPressed: "#446900",
+        textColorGhost: "#446900",
     },
     Tag: {
         colorChecked: "#E8DEF8",

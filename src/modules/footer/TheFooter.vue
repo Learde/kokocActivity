@@ -77,7 +77,7 @@ const goTo = (name) => {
     width: 100%;
     height: 80px;
 
-    background: var(--m-3-sys-light-surface-container, #f3edf7);
+    background: #eeedf1;
 
     .block {
         display: flex;

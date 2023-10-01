@@ -61,7 +61,7 @@ const logOut = () => {
             </div>
             <NButton
                 class="btn btn-rating"
-                type="primary"
+                type="tertiary"
                 ghost
                 @click="toRating"
             >

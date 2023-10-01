@@ -29,7 +29,7 @@ const isRegistrationDisabled = computed(() => {
             />
             <NButton
                 class="registration-button"
-                type="primary"
+                type="tertiary"
                 block
                 ghost
                 @click="nextStep"

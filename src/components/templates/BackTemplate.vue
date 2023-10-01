@@ -109,7 +109,7 @@ const hasTitle = computed(() => {
 }
 
 .top-menu-bgc {
-    background-color: #fef7ff;
+    background-color: #fff;
 }
 
 .top-menu-arrow {

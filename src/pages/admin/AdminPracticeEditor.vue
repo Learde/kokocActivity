@@ -117,7 +117,7 @@ onMounted(async () => {
                         </NText>
                         <NButton
                             class="add-exercise"
-                            type="primary"
+                            type="tertiary"
                             ghost
                             block
                             @click="addTraining"
