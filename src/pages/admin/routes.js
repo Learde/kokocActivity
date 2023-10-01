@@ -33,4 +33,15 @@ export default [
         name: "AdminExercises",
         component: () => import("./AdminExercises.vue"),
     },
+    {
+        path: "/admin/exercise/add",
+        name: "AdminExerciseAdd",
+        component: () => import("./AdminExerciseAdd.vue"),
+    },
+    {
+        path: "/admin/exercise/edit/:id",
+        name: "AdminExerciseEdit",
+        props: true,
+        component: () => import("./AdminExerciseAdd.vue"),
+    },
 ];

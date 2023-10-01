@@ -24,3 +24,7 @@ export { login } from "./auth/login";
 
 // exercises
 export { getExercises } from "./exercises/getExercises";
+export { addExercise } from "./exercises/addExercise";
+export { removeExercise } from "./exercises/removeExercise";
+export { editExercise } from "./exercises/editExercise";
+export { getExercise } from "./exercises/getExercise";

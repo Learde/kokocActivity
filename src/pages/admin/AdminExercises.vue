@@ -24,7 +24,12 @@ exercisesStore.getExercises();
 <template>
     <BackTemplate no-background title="Упражнения">
         <template #action>
-            <NButton class="button-round add-exercise" type="primary" secondary>
+            <NButton
+                class="button-round add-exercise"
+                type="primary"
+                secondary
+                @click="$router.push({ name: 'AdminExerciseAdd' })"
+            >
                 <IconPlus />
             </NButton>
         </template>
@@ -36,6 +41,12 @@ exercisesStore.getExercises();
                         class="exercise"
                         v-for="exercise in getExercisesByType('STRENGTH')"
                         :key="exercise.id"
+                        @click="
+                            $router.push({
+                                name: 'AdminExerciseEdit',
+                                params: { id: exercise.id },
+                            })
+                        "
                     >
                         <span>{{ exercise.name }}</span>
                         <IconMenuRight />
@@ -45,6 +56,12 @@ exercisesStore.getExercises();
                         class="exercise"
                         v-for="exercise in getExercisesByType('CARDIO')"
                         :key="exercise.id"
+                        @click="
+                            $router.push({
+                                name: 'AdminExerciseEdit',
+                                params: { id: exercise.id },
+                            })
+                        "
                     >
                         <span>{{ exercise.name }}</span>
                         <IconMenuRight />
@@ -54,6 +71,12 @@ exercisesStore.getExercises();
                         class="exercise"
                         v-for="exercise in getExercisesByType('MSS')"
                         :key="exercise.id"
+                        @click="
+                            $router.push({
+                                name: 'AdminExerciseEdit',
+                                params: { id: exercise.id },
+                            })
+                        "
                     >
                         <span>{{ exercise.name }}</span>
                         <IconMenuRight />
@@ -63,6 +86,12 @@ exercisesStore.getExercises();
                         class="exercise"
                         v-for="exercise in getExercisesByType('COORDINATION')"
                         :key="exercise.id"
+                        @click="
+                            $router.push({
+                                name: 'AdminExerciseEdit',
+                                params: { id: exercise.id },
+                            })
+                        "
                     >
                         <span>{{ exercise.name }}</span>
                         <IconMenuRight />
