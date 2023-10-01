@@ -89,5 +89,9 @@ const goTo = (name) => {
 
         cursor: pointer;
     }
+
+    .selected {
+        background: var(--m-3-sys-light-secondary-container, #b5f63c);
+    }
 }
 </style>
