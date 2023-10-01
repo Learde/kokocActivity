@@ -3,6 +3,6 @@ export default [
     {
         name: "shop",
         path: "/shop",
-        component: import("./ShopPage.vue"),
+        component: () => import("./ShopPage.vue"),
     },
 ];

@@ -3,6 +3,6 @@ export default [
     {
         name: "summary",
         path: "/summary",
-        component: import("./SummaryPage.vue"),
+        component: () => import("./SummaryPage.vue"),
     },
 ];

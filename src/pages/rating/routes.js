@@ -3,6 +3,6 @@ export default [
     {
         name: "rating",
         path: "/rating",
-        component: import("./RatingPage.vue"),
+        component: () => import("./RatingPage.vue"),
     },
 ];

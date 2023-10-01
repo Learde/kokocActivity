@@ -3,7 +3,7 @@ export default [
     {
         name: "practices",
         path: "/practices",
-        component: import("./PracticesPage.vue"),
+        component: () => import("./PracticesPage.vue"),
     },
     {
         path: "/practice/card/:id",
