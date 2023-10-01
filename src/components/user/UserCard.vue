@@ -13,10 +13,8 @@ const props = defineProps({
 });
 
 const variants = {
-    money: "Купюры 💸",
-    calories: "Калории 🔥",
-    averageTime: "Время ⌛",
-    averageDonat: "Донат 🪙",
+    top10tmoney: "Купюры 💸",
+    top10train: "Тренировки 🔥",
 };
 </script>
 
