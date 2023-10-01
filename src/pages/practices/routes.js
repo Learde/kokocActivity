@@ -26,8 +26,9 @@ export default [
         component: () => import("./PracticeConfirm.vue"),
     },
     {
-        path: "/practice/submit",
+        path: `/practice/:id/submit`,
         name: "PracticeSubmit",
+        props: true,
         component: () => import("./PracticeSubmit.vue"),
     },
 ];

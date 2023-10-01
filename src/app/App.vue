@@ -11,17 +11,19 @@ const userStore = useUserStore();
 </script>
 
 <template>
-    <NMessageProvider>
-        <NDialogProvider>
-            <NConfigProvider :theme-overrides="naiveConfig">
-                <TheMain :has-footer="authStore.isAuthenticated">
-                    <RouterView />
-                </TheMain>
-                <TheFooter
-                    v-if="authStore.isAuthenticated"
-                    :is-admin="userStore.role === 'admin'"
-                />
-            </NConfigProvider>
-        </NDialogProvider>
-    </NMessageProvider>
+    <NNotificationProvider>
+        <NMessageProvider>
+            <NDialogProvider>
+                <NConfigProvider :theme-overrides="naiveConfig">
+                    <TheMain :has-footer="authStore.isAuthenticated">
+                        <RouterView />
+                    </TheMain>
+                    <TheFooter
+                        v-if="authStore.isAuthenticated"
+                        :is-admin="userStore.role === 'admin'"
+                    />
+                </NConfigProvider>
+            </NDialogProvider>
+        </NMessageProvider>
+    </NNotificationProvider>
 </template>

@@ -81,7 +81,13 @@ a {
 }
 
 .n-button--secondary.n-button--primary-type {
-  background-color: #E8DEF8;
+  color: #131F00;
+
+  background-color: #dce7c7;
+}
+
+.n-button--primary-type {
+  color:#131F00 !important;
 }
 
 .button-round {

@@ -12,6 +12,10 @@ const singUpPractice = () => {
     router.push({ name: "practice-fund", params: { id: route.params.id } });
 };
 
+const goToSubmit = () => {
+    router.push({ name: "PracticeSubmit", params: { id: route.params.id } });
+};
+
 const practice = ref(null);
 const attach = ref(false);
 const store = usePracticeStore();
@@ -22,11 +26,8 @@ onMounted(async () => {
     practice.value = await store.practiceById(route.params.id);
     const userPractices = await store.fetchUserPractices();
 
-    console.log(userPractices, practice);
-
     if (userPractices.map((el) => el.id).includes(practice.value.id)) {
         attach.value = true;
-        console.log("OK");
     }
 });
 </script>
@@ -76,7 +77,7 @@ onMounted(async () => {
             >
                 Записаться
             </NButton>
-            <NButton v-else class="btn" type="primary" @click="singUpPractice">
+            <NButton v-else class="btn" type="primary" @click="goToSubmit">
                 Приступить к занятию
             </NButton>
         </div>

@@ -36,6 +36,8 @@ export const naiveConfig = {
         colorOpacitySecondary: "1",
         textColor: "#131F00",
         textColorPrimary: "#131F00",
+        textColorHover: "#131F00",
+        textColorTextHoverPrimary: "#131F00",
         colorTertiary: "#446900",
         colorTertiaryHover: "#446900",
         colorTertiaryPressed: "#446900",
