@@ -120,7 +120,7 @@ const updateTag = (val) => {
 
         background: var(
             --m-3-sys-light-secondary-container,
-            #e8def8
+            #dce7c7
         ) !important;
     }
 }

@@ -70,7 +70,7 @@ const toCard = (id) => {
     margin-top: 16px;
     margin-right: 15px;
 
-    border: 2px solid var(--m-3-sys-light-primary, #6750a4);
+    border: 2px solid var(--m-3-sys-light-secondary-container, #dce7c7);
 
     .name {
         display: flex;
@@ -111,7 +111,7 @@ const toCard = (id) => {
         text-align: center;
         letter-spacing: 0.1px;
 
-        background: var(--m-3-sys-light-secondary-container, #e8def8);
+        background: var(--m-3-sys-light-secondary-container, #dce7c7);
         border: none;
         border-radius: 5px;
     }

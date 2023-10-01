@@ -1,33 +1,30 @@
 <script setup>
 import { ListCard } from "@/components";
 
-// const props = defineProps({
-//     fund: {
-//         type: Object,
-//         required: true,
-//     },
-// });
+defineProps({
+    fund: {
+        type: Object,
+        required: true,
+    },
+    active: {
+        type: Boolean,
+        default: false,
+    },
+});
 </script>
 
 <template>
     <div>
-        <ListCard class="card">
+        <ListCard class="card" :class="{ active: active }">
             <template #title>
                 <div class="name">
                     <img class="mini-img" src="/src/shared/images/yoga.png" />
-                    <span class="card-title roboto-flex"
-                        >Гармония тела и души</span
-                    >
+                    <span class="card-title roboto-flex">{{ fund?.name }}</span>
                 </div>
-            </template>
-            <template #tag>
-                <NTag checked checkable> Йога </NTag>
             </template>
             <template #footer>
                 <div class="desc">
-                    Наши усилия направлены на борьбу с голодом и поддержку тех,
-                    кто страдает от недостатка пищи. Присоединяйтесь к нам,
-                    чтобы сделать мир более сытым и благополучным!
+                    {{ fund?.description }}
                 </div>
             </template>
         </ListCard>
@@ -35,12 +32,21 @@ import { ListCard } from "@/components";
 </template>
 
 <style scoped lang="scss">
+.active {
+    background: linear-gradient(
+            0deg,
+            rgba(178, 247, 72, 25%) 0%,
+            rgba(178, 247, 72, 25%) 100%
+        ),
+        #fff;
+}
+
 .card {
     min-width: 280px;
     margin-top: 16px;
     margin-right: 15px;
 
-    border: 2px solid var(--m-3-sys-light-primary, #6750a4);
+    border: 2px solid var(--m-3-sys-light-secondary-container, #dce7c7);
 
     .name {
         display: flex;
@@ -81,7 +87,7 @@ import { ListCard } from "@/components";
         text-align: center;
         letter-spacing: 0.1px;
 
-        background: var(--m-3-sys-light-secondary-container, #e8def8);
+        background: var(--m-3-sys-light-secondary-container, #dce7c7);
         border: none;
         border-radius: 5px;
     }

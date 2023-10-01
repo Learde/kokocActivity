@@ -38,6 +38,8 @@ export { getTraining } from "./trainings/getTraining";
 export { addExerciseToTraining } from "./trainings/addExerciseToTraining";
 
 // practice
-
 export { getPractices } from "./practice/practice";
 export { getPractice } from "./practice/practice";
+
+//fundes
+export { getFundes } from "./fundes/fundes";

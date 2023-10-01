@@ -3,7 +3,7 @@
  */
 export const naiveConfig = {
     common: {
-        primaryColor: "#6750A4",
+        primaryColor: "rgba(68, 105, 0, 1)",
         primaryColorHover: "#ff3148",
         primaryColorPressed: "#ff233c",
         infoColor: "#003791",
