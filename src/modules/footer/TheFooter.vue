@@ -18,7 +18,12 @@ const goTo = (name) => {
 <template>
     <div class="footer-menu">
         <div class="block" @click="goTo('summary')">Сводка</div>
-        <div class="block" @click="goTo('practices')">Курсы</div>
+        <div
+            class="block"
+            @click="goTo(isAdmin ? 'AdminPractices' : 'practices')"
+        >
+            Курсы
+        </div>
 
         <div v-if="isAdmin" class="block" @click="goTo('AdminSettings')">
             Управление

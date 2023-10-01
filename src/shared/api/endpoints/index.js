@@ -41,6 +41,10 @@ export { addExerciseToTraining } from "./trainings/addExerciseToTraining";
 export { getPractices } from "./practice/practice";
 export { getPractice } from "./practice/practice";
 export { confirmPractice } from "./practice/practice";
+export { addPractice } from "./practice/addPractice";
+export { editPractice } from "./practice/editPractice";
+export { removePractice } from "./practice/removePractice";
+export { addTrainingToPractice } from "./practice/addTrainingToPractice";
 
-//fundes
+// funds
 export { getFundes } from "./fundes/fundes";

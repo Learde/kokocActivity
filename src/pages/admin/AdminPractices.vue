@@ -17,7 +17,7 @@ onMounted(async () => {
 });
 
 const goToAdd = () => {
-    router.push({ name: "AdminPracticesAddStep1" });
+    router.push({ name: "AdminPracticeAdd" });
 };
 </script>
 
@@ -41,6 +41,7 @@ const goToAdd = () => {
                 :key="practice.id"
                 :practice="practice"
                 small
+                route="AdminPracticeEdit"
             />
         </div>
     </NSpin>

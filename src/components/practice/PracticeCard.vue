@@ -12,11 +12,15 @@ const props = defineProps({
         type: Object,
         required: true,
     },
+    route: {
+        type: String,
+        default: "practice-card",
+    },
 });
 
 const router = useRouter();
 const toCard = (id) => {
-    router.push({ name: "practice-card", params: { id } });
+    router.push({ name: props.route, params: { id } });
 };
 </script>
 
@@ -69,6 +73,8 @@ const toCard = (id) => {
     min-width: 280px;
     margin-top: 16px;
     margin-right: 15px;
+
+    cursor: pointer;
 
     border: 2px solid var(--m-3-sys-light-secondary-container, #dce7c7);
 

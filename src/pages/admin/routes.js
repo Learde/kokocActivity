@@ -19,9 +19,20 @@ export default [
                     step: 1,
                     isDirectionColumn: true,
                 },
-                component: () => import("./AdminPracticesAddStep1.vue"),
+                component: () => import("./AdminPracticeEditor.vue"),
             },
         ],
+    },
+    {
+        path: "/admin/practice/add",
+        name: "AdminPracticeAdd",
+        component: () => import("./AdminPracticeEditor.vue"),
+    },
+    {
+        path: "/admin/practice/edit/:id",
+        name: "AdminPracticeEdit",
+        props: true,
+        component: () => import("./AdminPracticeEditor.vue"),
     },
     {
         path: "/admin/settings",
@@ -65,5 +76,11 @@ export default [
         name: "AdminTrainingEditExercises",
         props: true,
         component: () => import("./AdminTrainingExercisePicker.vue"),
+    },
+    {
+        path: "/admin/practice/edit/:id/trainings",
+        name: "AdminPracticeEditTrainings",
+        props: true,
+        component: () => import("./AdminPracticeTrainingsPicker.vue"),
     },
 ];

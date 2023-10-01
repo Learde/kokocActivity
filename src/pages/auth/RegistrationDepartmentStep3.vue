@@ -11,7 +11,7 @@ const userStore = useUserStore();
 const registrationStore = useRegistrationStore();
 const finishRegistration = () => {
     registrationStore.applyToken();
-    userStore.role("dephead");
+    userStore.setRole("dephead");
     router.push({ name: "summary" });
 };
 </script>
