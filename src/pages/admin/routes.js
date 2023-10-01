@@ -60,4 +60,10 @@ export default [
         props: true,
         component: () => import("./AdminTrainingEditor.vue"),
     },
+    {
+        path: "/admin/training/edit/:id/exercises",
+        name: "AdminTrainingEditExercises",
+        props: true,
+        component: () => import("./AdminTrainingExercisePicker.vue"),
+    },
 ];

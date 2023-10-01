@@ -87,6 +87,13 @@ const add = async () => {
     reload();
 };
 
+const addExercises = () => {
+    router.push({
+        name: "AdminTrainingEditExercises",
+        params: { id: props.id },
+    });
+};
+
 onMounted(async () => {
     if (isEdit.value) {
         reload();
@@ -122,9 +129,17 @@ onMounted(async () => {
                 <div v-if="isEdit">
                     <NH4 class="roboto-flex h4">Упражнения</NH4>
                     <NText class="info" depth="2">
-                        Итоговая стоимость: 200 купюр 💸 20 монет 🪙
+                        Итоговая стоимость: {{ training.training_cost }} купюр
+                        💸 {{ Math.round(training.training_cost / 10) }} монет
+                        🪙
                     </NText>
-                    <NButton class="add-exercise" type="primary" ghost block>
+                    <NButton
+                        class="add-exercise"
+                        type="primary"
+                        ghost
+                        block
+                        @click="addExercises"
+                    >
                         <IconPlus class="training-plus" />
                         Добавить упражнения
                     </NButton>

@@ -1,14 +1,23 @@
 <script setup>
 import { storeToRefs } from "pinia";
-import { onMounted } from "vue";
+import { ref, onMounted } from "vue";
+import { useRouter } from "vue-router";
 
 import { BackTemplate } from "@/components";
-import { IconPlus, IconMenuRight, isArray } from "@/shared";
+import { IconCheck, isArray, addExerciseToTraining } from "@/shared";
 
 import { useExercisesStore } from "./useExercisesStore";
 
+const props = defineProps({
+    id: Number,
+});
+
+const router = useRouter();
+
 const exercisesStore = useExercisesStore();
 const { exercises, isLoading } = storeToRefs(exercisesStore);
+
+const pickedExercises = ref([]);
 
 const getExercisesByType = (type) => {
     if (!isArray(exercises.value)) return [];
@@ -19,21 +28,51 @@ const getExercisesByType = (type) => {
     );
 };
 
+const isChecked = ({ id }) => {
+    return (
+        pickedExercises.value.findIndex(
+            ({ id: idOther }) => Number(idOther) === Number(id)
+        ) >= 0
+    );
+};
+
+const pickExercise = (exercise) => {
+    if (!isChecked(exercise)) {
+        pickedExercises.value.push(exercise);
+
+        return;
+    }
+
+    pickedExercises.value = pickedExercises.value.filter(
+        ({ id }) => Number(id) !== Number(exercise.id)
+    );
+};
+
+const save = () => {
+    isLoading.value = true;
+    pickedExercises.value.forEach(async (exercise) => {
+        await addExerciseToTraining(props.id, exercise.id);
+    });
+    isLoading.value = false;
+
+    router.push({ name: "AdminTrainingEdit", params: { id: props.id } });
+};
+
 onMounted(() => {
     exercisesStore.getExercises();
 });
 </script>
 
 <template>
-    <BackTemplate no-background title="Упражнения">
+    <BackTemplate no-background title="Выбор упражнений">
         <template #action>
             <NButton
                 class="button-round add-exercise"
                 type="primary"
                 secondary
-                @click="$router.push({ name: 'AdminExerciseAdd' })"
+                @click="save"
             >
-                <IconPlus />
+                <IconCheck />
             </NButton>
         </template>
         <template #default>
@@ -44,60 +83,40 @@ onMounted(() => {
                         class="exercise"
                         v-for="exercise in getExercisesByType('STRENGTH')"
                         :key="exercise.id"
-                        @click="
-                            $router.push({
-                                name: 'AdminExerciseEdit',
-                                params: { id: exercise.id },
-                            })
-                        "
+                        @click="pickExercise(exercise)"
                     >
                         <span>{{ exercise.name }}</span>
-                        <IconMenuRight />
+                        <NCheckbox :checked="isChecked(exercise)" />
                     </div>
                     <NH3 class="roboto-flex heading">Кардио</NH3>
                     <div
                         class="exercise"
                         v-for="exercise in getExercisesByType('CARDIO')"
                         :key="exercise.id"
-                        @click="
-                            $router.push({
-                                name: 'AdminExerciseEdit',
-                                params: { id: exercise.id },
-                            })
-                        "
+                        @click="pickExercise(exercise)"
                     >
                         <span>{{ exercise.name }}</span>
-                        <IconMenuRight />
+                        <NCheckbox :checked="isChecked(exercise)" />
                     </div>
                     <NH3 class="roboto-flex heading">Опорно-двигательная</NH3>
                     <div
                         class="exercise"
                         v-for="exercise in getExercisesByType('MSS')"
                         :key="exercise.id"
-                        @click="
-                            $router.push({
-                                name: 'AdminExerciseEdit',
-                                params: { id: exercise.id },
-                            })
-                        "
+                        @click="pickExercise(exercise)"
                     >
                         <span>{{ exercise.name }}</span>
-                        <IconMenuRight />
+                        <NCheckbox :checked="isChecked(exercise)" />
                     </div>
                     <NH3 class="roboto-flex heading">На координацию</NH3>
                     <div
                         class="exercise"
                         v-for="exercise in getExercisesByType('COORDINATION')"
                         :key="exercise.id"
-                        @click="
-                            $router.push({
-                                name: 'AdminExerciseEdit',
-                                params: { id: exercise.id },
-                            })
-                        "
+                        @click="pickExercise(exercise)"
                     >
                         <span>{{ exercise.name }}</span>
-                        <IconMenuRight />
+                        <NCheckbox :checked="isChecked(exercise)" />
                     </div>
                 </div>
             </NSpin>

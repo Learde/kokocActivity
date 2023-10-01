@@ -3,7 +3,7 @@ import { ref } from "vue";
 
 import { getTrainings as apiGetTrainings } from "@/shared";
 
-export const useTrainingsStore = defineStore("exercises", () => {
+export const useTrainingsStore = defineStore("trainings", () => {
     const trainings = ref([]);
     const isLoading = ref(false);
 

@@ -1,5 +1,6 @@
 <script setup>
 import { storeToRefs } from "pinia";
+import { onMounted } from "vue";
 
 import { BackTemplate } from "@/components";
 import { IconPlus, IconMenuRight, isArray } from "@/shared";
@@ -18,7 +19,9 @@ const getTrainingsByType = (type) => {
     );
 };
 
-trainingsStore.getTrainings();
+onMounted(() => {
+    trainingsStore.getTrainings();
+});
 </script>
 
 <template>
@@ -35,7 +38,7 @@ trainingsStore.getTrainings();
         </template>
         <template #default>
             <NSpin :show="isLoading">
-                <div class="trainings">
+                <div class="trainings" v-if="trainings">
                     <NH3 class="roboto-flex heading heading-first">Силовые</NH3>
                     <div
                         class="training"

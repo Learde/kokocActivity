@@ -35,3 +35,4 @@ export { addTraining } from "./trainings/addTraining";
 export { removeTraining } from "./trainings/removeTraining";
 export { editTraining } from "./trainings/editTraining";
 export { getTraining } from "./trainings/getTraining";
+export { addExerciseToTraining } from "./trainings/addExerciseToTraining";
